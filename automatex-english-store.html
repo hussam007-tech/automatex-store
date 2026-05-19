@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUTOMATEX — The Ecommerce Operator's Profit System</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold2: #E8C96A;
+  --gold3: #A07830;
+  --gold4: #F5DFA0;
+  --black: #050505;
+  --dark1: #0D0D0B;
+  --dark2: #141410;
+  --dark3: #1C1C18;
+  --dark4: #242420;
+  --white: #F5F0E8;
+  --white2: #C8C0B0;
+  --white3: #7A7468;
+  --red: #C0392B;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+/* ══ URGENCY BAR ══ */
+.urgency-bar {
+  background: linear-gradient(90deg, #7B0000, #C0392B, #7B0000);
+  background-size: 200% 100%;
+  animation: urgencyMove 4s ease infinite;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 13px; letter-spacing: 1.5px;
+  font-weight: 600; color: #fff;
+}
+@keyframes urgencyMove {
+  0%,100%{background-position:0% 50%} 50%{background-position:100% 50%}
+}
+.urgency-bar span { color: #FFD700; font-weight: 800; }
+
+/* ══ NAV ══ */
+nav {
+  position: sticky; top: 0; z-index: 90;
+  padding: 16px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(5,5,5,0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 18px; letter-spacing: 8px;
+  color: var(--gold); text-transform: uppercase;
+}
+
+.nav-center {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--white3);
+}
+.nav-center .slash { color: var(--gold3); }
+.nav-center .new-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; color: var(--gold); font-weight: 900;
+}
+.nav-center .old-price {
+  text-decoration: line-through; color: var(--white3); font-size: 13px;
+}
+
+.nav-btn {
+  background: var(--gold); color: var(--black);
+  border: none; padding: 10px 26px;
+  font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+}
+.nav-btn:hover { background: var(--gold2); transform: scale(1.03); }
+
+/* ══ HERO ══ */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 64px;
+  position: relative; overflow: hidden;
+  gap: 60px;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 65% 80% at 65% 50%, rgba(201,168,76,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 5% 80%, rgba(201,168,76,0.04) 0%, transparent 50%),
+    linear-gradient(150deg, #050505 0%, #0D0D0A 40%, #050505 100%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 72%);
+}
+
+/* LEFT TEXT */
+.hero-text { position: relative; z-index: 2; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold);
+}
+.hero-eyebrow::before {
+  content: ''; width: 28px; height: 1px;
+  background: var(--gold3);
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.05; font-weight: 900;
+  margin-bottom: 22px;
+}
+.hero-headline .line-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(201,168,76,0.45);
+}
+.hero-headline .line-gold { color: var(--gold); }
+
+.hero-desc {
+  font-size: 16px; line-height: 1.85;
+  color: var(--white2); max-width: 480px;
+  margin-bottom: 36px; font-weight: 300;
+}
+
+/* PAIN BOX */
+.pain-box {
+  background: rgba(192,57,43,0.07);
+  border: 1px solid rgba(192,57,43,0.25);
+  border-left: 3px solid var(--red);
+  padding: 18px 22px; margin-bottom: 36px;
+}
+.pain-box-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #E74C3C; margin-bottom: 8px; display: block; font-weight: 700;
+}
+.pain-box-text {
+  font-size: 14px; line-height: 1.75; color: var(--white2);
+}
+.pain-box-text strong { color: var(--white); }
+
+/* CTA */
+.hero-cta-stack { display: flex; flex-direction: column; gap: 12px; max-width: 420px; }
+
+.btn-hero {
+  background: linear-gradient(135deg, var(--gold3), var(--gold), var(--gold2));
+  background-size: 250% 100%;
+  color: var(--black); border: none;
+  padding: 20px 36px;
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.4s;
+  animation: shimmerBtn 3s linear infinite;
+  box-shadow: 0 0 40px rgba(201,168,76,0.22), 0 8px 30px rgba(0,0,0,0.6);
+}
+@keyframes shimmerBtn {
+  0%{background-position:-200% 0} 100%{background-position:200% 0}
+}
+.btn-hero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 60px rgba(201,168,76,0.4), 0 16px 48px rgba(0,0,0,0.8);
+}
+
+.btn-sub {
+  font-size: 11px; color: var(--white3);
+  letter-spacing: 1px; text-align: center;
+}
+
+/* ══ 3D BOOK ══ */
+.hero-visual {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  perspective: 1200px;
+}
+
+.book-scene {
+  width: 290px; height: 390px;
+  position: relative; transform-style: preserve-3d;
+  animation: bookFloat 6s ease-in-out infinite;
+}
+
+@keyframes bookFloat {
+  0%,100%{transform:rotateY(-22deg) rotateX(5deg) translateY(0px)}
+  33%{transform:rotateY(-17deg) rotateX(8deg) translateY(-14px)}
+  66%{transform:rotateY(-27deg) rotateX(3deg) translateY(-7px)}
+}
+
+.book-front {
+  position: absolute; inset: 0;
+  background: linear-gradient(150deg, #181810, #0e0e0a, #181810);
+  border: 1px solid rgba(201,168,76,0.28);
+  transform: translateZ(24px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: space-between;
+  padding: 34px 26px;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.6), 0 0 80px rgba(201,168,76,0.08);
+  overflow: hidden;
+}
+.book-front::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 15%, rgba(201,168,76,0.07), transparent 55%);
+  pointer-events: none;
+}
+.book-front::after {
+  content: ''; position: absolute;
+  top: 0; right: 0; width: 3px; height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--gold), var(--gold2), var(--gold), transparent);
+}
+
+.bc-tl, .bc-br {
+  position: absolute; width: 22px; height: 22px;
+  border-color: var(--gold3); border-style: solid;
+}
+.bc-tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+.bc-br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+.book-logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: 14px; letter-spacing: 10px;
+  color: var(--gold); text-align: center;
+  position: relative; z-index: 1;
+}
+
+.book-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold3), transparent);
+}
+
+.book-center { text-align: center; position: relative; z-index: 1; }
+.book-main-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--white); line-height: 1.4; margin-bottom: 10px;
+}
+.book-main-sub {
+  font-size: 8px; letter-spacing: 1.5px;
+  color: var(--white3); text-transform: uppercase; line-height: 1.8;
+}
+
+.book-seal {
+  position: relative; z-index: 1;
+  border: 1px solid var(--gold3); padding: 5px 12px;
+  font-size: 8px; letter-spacing: 3px;
+  color: var(--gold); text-transform: uppercase; text-align: center;
+}
+
+.book-spine {
+  position: absolute; top: 0; left: -24px;
+  width: 24px; height: 100%;
+  background: linear-gradient(to right, #080806, #181810);
+  border: 1px solid rgba(201,168,76,0.12);
+  transform: rotateY(-90deg) translateZ(0px);
+  transform-origin: right;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: inset -4px 0 10px rgba(0,0,0,0.5);
+}
+.book-spine-text {
+  font-family: 'Cinzel', serif;
+  font-size: 7px; letter-spacing: 3px;
+  color: var(--gold3); writing-mode: vertical-rl;
+}
+
+.book-shadow {
+  position: absolute; bottom: -36px; left: 50%;
+  transform: translateX(-50%);
+  width: 240px; height: 28px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.75), transparent 70%);
+  filter: blur(10px);
+  animation: shadowAnim 6s ease-in-out infinite;
+}
+@keyframes shadowAnim {
+  0%,100%{transform:translateX(-50%) scaleX(1);opacity:.7}
+  50%{transform:translateX(-50%) scaleX(.82);opacity:.45}
+}
+
+.particles { position: absolute; inset: -50px; pointer-events: none; }
+.particle {
+  position: absolute; width: 2px; height: 2px;
+  background: var(--gold); border-radius: 50%;
+  animation: pFloat linear infinite; opacity: 0;
+}
+@keyframes pFloat {
+  0%{transform:translateY(80px);opacity:0}
+  10%{opacity:.5} 90%{opacity:.2}
+  100%{transform:translateY(-80px) translateX(20px);opacity:0}
+}
+
+/* ══ STATS BAR ══ */
+.stats-bar {
+  background: var(--dark2);
+  border-top: 1px solid rgba(201,168,76,0.08);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  padding: 22px 64px;
+  display: flex; align-items: center;
+  justify-content: center; gap: 60px; flex-wrap: wrap;
+}
+.stat-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--white2);
+}
+.stat-item strong { color: var(--gold); font-size: 15px; }
+
+/* ══ SECTIONS ══ */
+.section { padding: 96px 64px; position: relative; }
+
+.section-eyebrow {
+  display: block; text-align: center;
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px); font-weight: 700;
+  text-align: center; color: var(--white);
+  line-height: 1.1; margin-bottom: 16px;
+}
+
+.section-sub {
+  text-align: center; color: var(--white2);
+  font-size: 15px; max-width: 520px;
+  margin: 0 auto 56px; line-height: 1.85; font-weight: 300;
+}
+
+/* ══ VALUE TABLE ══ */
+.value-table {
+  max-width: 680px; margin: 0 auto 50px;
+  border: 1px solid rgba(201,168,76,0.14); overflow: hidden;
+}
+.value-header {
+  background: rgba(201,168,76,0.07);
+  display: grid; grid-template-columns: 1fr 110px 110px;
+  gap: 16px; padding: 12px 28px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold3);
+}
+.value-row {
+  display: grid; grid-template-columns: 1fr 110px 110px;
+  gap: 16px; align-items: center;
+  padding: 18px 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.3s;
+}
+.value-row:last-child { border-bottom: none; }
+.value-row:hover { background: rgba(201,168,76,0.025); }
+.val-name { font-size: 14px; color: var(--white); font-weight: 500; }
+.val-sub { font-size: 11px; color: var(--white3); margin-top: 2px; }
+.val-normal { font-size: 14px; color: var(--white3); text-decoration: line-through; }
+.val-yours { font-size: 14px; color: var(--gold); font-weight: 700; }
+.value-total {
+  background: rgba(201,168,76,0.05);
+  border-top: 1px solid rgba(201,168,76,0.18) !important;
+}
+.val-total-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--white); }
+.val-total-normal { font-size: 18px; color: var(--white3); text-decoration: line-through; }
+.val-total-yours { font-size: 22px; color: var(--gold); font-weight: 900; font-family: 'Playfair Display', serif; }
+
+/* ══ MODULES ══ */
+.modules-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: rgba(201,168,76,0.07);
+  border: 1px solid rgba(201,168,76,0.1); margin-top: 56px;
+}
+.module-card {
+  background: var(--dark1); padding: 34px 26px;
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  position: relative; overflow: hidden;
+}
+.module-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.module-card:hover { background: var(--dark2); transform: translateY(-3px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 2; }
+.module-card:hover::before { transform: scaleX(1); }
+.mod-num {
+  font-family: 'Cinzel', serif;
+  font-size: 48px; font-weight: 900;
+  color: rgba(201,168,76,0.07); line-height: 1;
+  margin-bottom: 12px; transition: color 0.4s;
+}
+.module-card:hover .mod-num { color: rgba(201,168,76,0.13); }
+.mod-title { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+.mod-body { font-size: 13px; line-height: 1.75; color: var(--white3); margin-bottom: 14px; font-weight: 300; }
+.mod-badge {
+  display: inline-block; font-size: 10px; letter-spacing: 2px;
+  color: var(--gold3); border: 1px solid rgba(201,168,76,0.18);
+  padding: 3px 10px; text-transform: uppercase;
+}
+
+/* ══ COUNTDOWN ══ */
+.countdown-section {
+  padding: 80px 64px; text-align: center;
+  background: linear-gradient(135deg, var(--dark2), var(--dark1));
+  border-top: 1px solid rgba(201,168,76,0.08);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  position: relative; overflow: hidden;
+}
+.countdown-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.04), transparent 60%);
+  pointer-events: none;
+}
+
+.cd-label {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 14px; display: block;
+  animation: blinkAnim 2s ease infinite;
+}
+@keyframes blinkAnim { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+.cd-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 3.5vw, 38px); font-weight: 700;
+  color: var(--white); margin-bottom: 40px; line-height: 1.2;
+}
+.cd-title span { color: var(--gold); }
+
+.cd-timer {
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px; margin-bottom: 48px;
+}
+.cd-unit { text-align: center; }
+.cd-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 7vw, 82px); font-weight: 900;
+  color: var(--gold); line-height: 1;
+  background: linear-gradient(180deg, var(--dark3), var(--dark2));
+  border: 1px solid rgba(201,168,76,0.18);
+  width: 120px; height: 112px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,168,76,0.08);
+  position: relative;
+}
+.cd-num::after {
+  content: ''; position: absolute;
+  left: 0; right: 0; top: 50%; height: 1px;
+  background: rgba(201,168,76,0.08);
+}
+.cd-lbl {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--white3); margin-top: 10px; display: block;
+}
+.cd-sep {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px; color: var(--gold3); line-height: 1;
+  margin-bottom: 26px;
+}
+
+/* ══ FAQ ══ */
+.faq-section { padding: 96px 64px; }
+
+.faq-list { max-width: 720px; margin: 56px auto 0; }
+
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%; background: none; border: none;
+  padding: 22px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; text-align: left;
+  transition: all 0.3s;
+}
+
+.faq-q-text {
+  font-size: 15px; font-weight: 500;
+  color: var(--white); line-height: 1.4;
+  transition: color 0.3s;
+}
+.faq-question:hover .faq-q-text { color: var(--gold); }
+
+.faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border: 1px solid rgba(201,168,76,0.25);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 16px;
+  transition: all 0.35s; margin-left: 20px;
+}
+
+.faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(201,168,76,0.1); }
+.faq-item.open .faq-q-text { color: var(--gold); }
+
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.23,1,0.32,1), padding 0.3s;
+  padding: 0;
+}
+
+.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 20px; }
+
+.faq-answer-text {
+  font-size: 14px; line-height: 1.85;
+  color: var(--white2); font-weight: 300;
+}
+.faq-answer-text strong { color: var(--white); font-weight: 500; }
+
+/* ══ PRICING ══ */
+.pricing-wrap {
+  max-width: 600px; margin: 0 auto;
+  position: relative;
+}
+.pricing-wrap::before {
+  content: ''; position: absolute; inset: -50px;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.07), transparent 65%);
+  pointer-events: none;
+}
+
+.pricing-card {
+  border: 1px solid rgba(201,168,76,0.22);
+  background: linear-gradient(155deg, var(--dark2), var(--dark1), var(--dark2));
+  position: relative; overflow: hidden;
+}
+.pricing-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), var(--gold2), var(--gold), transparent);
+}
+
+.pricing-badge {
+  background: linear-gradient(90deg, var(--gold3), var(--gold), var(--gold3));
+  color: var(--black); text-align: center;
+  padding: 12px; font-weight: 800;
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+  animation: badgeGlow 2.5s ease infinite;
+}
+@keyframes badgeGlow {
+  0%,100%{box-shadow:0 0 20px rgba(201,168,76,0.25)}
+  50%{box-shadow:0 0 50px rgba(201,168,76,0.55)}
+}
+
+.pricing-body { padding: 48px; }
+.pricing-eyebrow {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: block;
+}
+.pricing-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 700;
+  color: var(--white); margin-bottom: 30px; line-height: 1.3;
+}
+
+.features-list { list-style: none; margin-bottom: 38px; }
+.feature-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: var(--white2); line-height: 1.5; font-weight: 300;
+}
+.feature-item:last-child { border-bottom: none; }
+.f-check { color: var(--gold); font-size: 11px; margin-top: 3px; flex-shrink: 0; }
+
+/* PRICE */
+.price-block { margin-bottom: 26px; }
+.price-anchor-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--white3); margin-bottom: 10px; display: block;
+}
+.price-row-top { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.price-was { font-size: 24px; color: var(--white3); text-decoration: line-through; opacity: 0.55; font-family: 'Playfair Display', serif; }
+.price-save { background: rgba(192,57,43,0.14); border: 1px solid rgba(192,57,43,0.35); color: #E74C3C; padding: 3px 10px; font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+.price-row-main { display: flex; align-items: flex-start; gap: 4px; margin-bottom: 6px; }
+.price-currency { font-size: 26px; color: var(--gold); margin-top: 8px; font-weight: 700; }
+.price-main { font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 900; color: var(--gold); line-height: 1; }
+.price-note { font-size: 12px; color: var(--white3); letter-spacing: 1px; }
+
+.roi-box {
+  background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.13);
+  padding: 16px 18px; margin-bottom: 28px;
+  font-size: 13px; color: var(--white2); line-height: 1.75; font-weight: 300;
+}
+.roi-box strong { color: var(--gold); font-weight: 600; }
+
+.btn-buy {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold3), var(--gold), var(--gold2));
+  background-size: 200% 100%;
+  color: var(--black); border: none; padding: 22px;
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: 16px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  box-shadow: 0 0 40px rgba(201,168,76,0.28), 0 8px 28px rgba(0,0,0,0.5);
+  animation: buyPulse 2.8s ease infinite;
+}
+@keyframes buyPulse {
+  0%,100%{box-shadow:0 0 30px rgba(201,168,76,0.22),0 8px 28px rgba(0,0,0,.5)}
+  50%{box-shadow:0 0 60px rgba(201,168,76,0.5),0 8px 28px rgba(0,0,0,.5)}
+}
+.btn-buy:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+.btn-microcopy {
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px; margin-top: 14px;
+  font-size: 11px; color: var(--white3); letter-spacing: 1px;
+}
+
+/* ══ GUARANTEE ══ */
+.guarantee-section {
+  padding: 60px 64px; text-align: center;
+  border-top: 1px solid rgba(201,168,76,0.06);
+}
+.guarantee-ring {
+  width: 110px; height: 110px;
+  border: 1.5px solid var(--gold3); border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  margin: 0 auto 26px;
+  background: rgba(201,168,76,0.04);
+  box-shadow: 0 0 36px rgba(201,168,76,0.08);
+}
+.guarantee-icon { font-size: 32px; }
+.guarantee-ring-label { font-size: 8px; letter-spacing: 2px; color: var(--gold3); text-transform: uppercase; margin-top: 4px; }
+.guarantee-title { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--white); margin-bottom: 12px; }
+.guarantee-text { font-size: 14px; color: var(--white2); max-width: 480px; margin: 0 auto; line-height: 1.85; font-weight: 300; }
+
+/* ══ FINAL CTA ══ */
+.final-section {
+  padding: 100px 64px; text-align: center;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.05), transparent 60%);
+}
+.final-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 5vw, 62px); font-weight: 900;
+  color: var(--white); margin-bottom: 18px; line-height: 1.1;
+}
+.final-title span { color: var(--gold); }
+.final-sub { font-size: 15px; color: var(--white2); max-width: 460px; margin: 0 auto 38px; line-height: 1.85; font-weight: 300; }
+.btn-final {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold3), var(--gold), var(--gold2));
+  color: var(--black); border: none; padding: 20px 64px;
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: 16px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  box-shadow: 0 0 50px rgba(201,168,76,0.28);
+  animation: buyPulse 2.8s ease infinite;
+}
+.btn-final:hover { transform: scale(1.04); }
+
+/* ══ FOOTER ══ */
+footer {
+  border-top: 1px solid rgba(201,168,76,0.07);
+  padding: 32px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo { font-family: 'Cinzel', serif; font-size: 15px; letter-spacing: 8px; color: var(--gold); }
+.footer-copy { font-size: 11px; color: var(--white3); letter-spacing: 1px; }
+
+/* ══ REVEAL ══ */
+.reveal { opacity: 0; transform: translateY(28px); transition: all 0.8s cubic-bezier(0.23,1,0.32,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:960px){
+  nav{padding:14px 20px}
+  .nav-center{display:none}
+  .hero{grid-template-columns:1fr;padding:60px 24px;gap:40px}
+  .hero-visual{order:-1}
+  .stats-bar{padding:18px 24px;gap:18px;flex-wrap:wrap}
+  .section,.faq-section,.pricing-section,.guarantee-section,.final-section,.countdown-section{padding:60px 24px}
+  .modules-grid{grid-template-columns:1fr}
+  .cd-num{width:80px;height:80px;font-size:40px}
+  .cd-timer{gap:10px}
+  footer{flex-direction:column;gap:10px;text-align:center;padding:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  ⚠️ &nbsp;Launch pricing ends soon — price increases to <span>$500</span> when the timer hits zero
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AUTOMATEX</div>
+  <div class="nav-center">
+    <span class="old-price">$500</span>
+    <span class="slash">/</span>
+    <span class="new-price">$97</span>
+    <span style="font-size:11px;letter-spacing:2px;color:var(--white3)">TODAY ONLY</span>
+  </div>
+  <button class="nav-btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Get It Now — $97</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-text">
+    <div class="hero-eyebrow">Premium Edition · 2025</div>
+
+    <h1 class="hero-headline">
+      The System That<br>
+      <span class="line-gold">Multiplies</span><br>
+      <span class="line-outline">Your Revenue</span>
+    </h1>
+
+    <p class="hero-desc">
+      7 battle-tested automation systems used by Shopify stores doing $10k–$500k/month.
+      No theory. No fluff. Step-by-step execution starting today.
+    </p>
+
+    <div class="pain-box">
+      <span class="pain-box-label">⚠️ How much are you losing right now?</span>
+      <p class="pain-box-text">
+        A store doing $30k/month leaves <strong>$2,100–$4,500</strong> in unrecovered abandoned carts every single month.
+        Every day without this system = <strong>$70–$150 wasted</strong> for no reason.
+      </p>
+    </div>
+
+    <div class="hero-cta-stack">
+      <button class="btn-hero" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+        Stop the Losses Now — $97 Only
+      </button>
+      <div class="btn-sub">🔒 Instant Access &nbsp;·&nbsp; 30-Day Money Back Guarantee &nbsp;·&nbsp; High-Quality PDF</div>
+    </div>
+  </div>
+
+  <!-- 3D BOOK -->
+  <div class="hero-visual">
+    <div class="book-scene">
+      <div class="book-front">
+        <div class="bc-tl"></div>
+        <div class="bc-br"></div>
+        <div class="book-logo-text">AUTOMATEX</div>
+        <div class="book-divider"></div>
+        <div class="book-center">
+          <div class="book-main-title">THE ECOMMERCE<br>OPERATOR'S<br>PROFIT SYSTEM</div>
+          <div class="book-main-sub">
+            7 Automation Systems<br>
+            10 Email Templates · 4 SOPs · 50 AI Prompts
+          </div>
+        </div>
+        <div class="book-divider"></div>
+        <div class="book-seal">PREMIUM EDITION 2025</div>
+      </div>
+      <div class="book-spine">
+        <span class="book-spine-text">AUTOMATEX · PROFIT SYSTEM</span>
+      </div>
+      <div class="book-shadow"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar reveal">
+  <div class="stat-item">⭐ &nbsp;Rated <strong>4.9 / 5</strong></div>
+  <div class="stat-item">⚡ &nbsp;Results in <strong>7 Days</strong></div>
+  <div class="stat-item">💰 &nbsp;<strong>$2M+</strong> Revenue Recovered</div>
+  <div class="stat-item">📦 &nbsp;Works on <strong>Any Shopify Store</strong></div>
+</div>
+
+<!-- VALUE STACK -->
+<section class="section reveal">
+  <span class="section-eyebrow">Real Value · No Fluff</span>
+  <h2 class="section-title">What You Get for $97</h2>
+  <p class="section-sub">Every element sold separately would cost you several times more — here's what you get today.</p>
+
+  <div class="value-table">
+    <div class="value-header">
+      <span>What's Included</span>
+      <span>Real Value</span>
+      <span>Your Price</span>
+    </div>
+    <div class="value-row">
+      <div><div class="val-name">7 Complete Operational Modules</div><div class="val-sub">With numbered step-by-step instructions</div></div>
+      <div class="val-normal">$297</div>
+      <div class="val-yours">✦ Included</div>
+    </div>
+    <div class="value-row">
+      <div><div class="val-name">10 Done-For-You Email Templates</div><div class="val-sub">Written to convert — not generic samples</div></div>
+      <div class="val-normal">$149</div>
+      <div class="val-yours">✦ Included</div>
+    </div>
+    <div class="value-row">
+      <div><div class="val-name">4 Standard Operating Procedures</div><div class="val-sub">Ready to delegate to your team today</div></div>
+      <div class="val-normal">$97</div>
+      <div class="val-yours">✦ Included</div>
+    </div>
+    <div class="value-row">
+      <div><div class="val-name">50 AI Prompts for Ecommerce</div><div class="val-sub">Support · Ads · Products · Operations</div></div>
+      <div class="val-normal">$79</div>
+      <div class="val-yours">✦ Included</div>
+    </div>
+    <div class="value-row">
+      <div><div class="val-name">Weekly KPI Dashboard</div><div class="val-sub">Google Sheets — ready to use</div></div>
+      <div class="val-normal">$49</div>
+      <div class="val-yours">✦ Included</div>
+    </div>
+    <div class="value-row value-total">
+      <div class="val-total-name">Total Value</div>
+      <div class="val-total-normal">$671</div>
+      <div class="val-total-yours">$97</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="section" style="padding-top:0">
+  <span class="section-eyebrow reveal">Inside the System</span>
+  <h2 class="section-title reveal">7 Systems. Real Results.</h2>
+
+  <div class="modules-grid reveal">
+    <div class="module-card">
+      <div class="mod-num">01</div>
+      <div class="mod-title">Customer Support Automation</div>
+      <div class="mod-body">Resolve 70–80% of tickets automatically. Reclaim 8–14 hours every week without hiring anyone.</div>
+      <span class="mod-badge">Save $2,400/month</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">02</div>
+      <div class="mod-title">Abandoned Cart Recovery</div>
+      <div class="mod-body">3 precisely-timed emails recover 8–15% of abandoned carts. Zero additional ad spend required.</div>
+      <span class="mod-badge">+$1,260/month</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">03</div>
+      <div class="mod-title">Inventory Planning & Control</div>
+      <div class="mod-body">The exact reorder point formula. End stockouts and overstock permanently with one spreadsheet.</div>
+      <span class="mod-badge">Zero Inventory Losses</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">04</div>
+      <div class="mod-title">Product Description Engine</div>
+      <div class="mod-body">The PCOA framework + 10 AI prompts. Descriptions that sell the outcome, not the product.</div>
+      <span class="mod-badge">+40% Conversion</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">05</div>
+      <div class="mod-title">Email Marketing System</div>
+      <div class="mod-body">4-layer architecture. $36–$42 per $1 spent. Automated flows + VIP + suppression protocol.</div>
+      <span class="mod-badge">15–30% of Revenue</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">06</div>
+      <div class="mod-title">Ad Spend Optimisation</div>
+      <div class="mod-body">Break-even ROAS formula + hard kill rules + 14-day creative rotation. Stop the ad budget bleed.</div>
+      <span class="mod-badge">Save 30% Ad Spend</span>
+    </div>
+    <div class="module-card">
+      <div class="mod-num">07</div>
+      <div class="mod-title">Customer Retention Architecture</div>
+      <div class="mod-body">Loyalty + VIP + post-purchase flows. Increase profits 25–95% without acquiring new customers.</div>
+      <span class="mod-badge">+95% Profit Increase</span>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section reveal">
+  <span class="cd-label">🔴 OFFER EXPIRES IN</span>
+  <h2 class="cd-title">After this timer ends,<br>the price goes up to <span>$500</span> — permanently.</h2>
+
+  <div class="cd-timer">
+    <div class="cd-unit">
+      <div class="cd-num" id="hours">23</div>
+      <span class="cd-lbl">Hours</span>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="minutes">47</div>
+      <span class="cd-lbl">Minutes</span>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="seconds">33</div>
+      <span class="cd-lbl">Seconds</span>
+    </div>
+  </div>
+
+  <button class="btn-hero" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+    Lock In $97 Before the Timer Ends →
+  </button>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <span class="section-eyebrow reveal">Got Questions?</span>
+  <h2 class="section-title reveal">Frequently Asked Questions</h2>
+
+  <div class="faq-list reveal">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="faq-q-text">What exactly do I get after purchasing?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">You get <strong>instant access</strong> to a high-quality PDF containing all 7 operational modules, 10 done-for-you email templates, 4 SOPs, 50 AI prompts, a weekly KPI dashboard, and a 30-day implementation roadmap. Everything is downloadable and yours to keep permanently.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="faq-q-text">Is this only for Shopify stores?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">The systems are built and tested on Shopify, but the principles and frameworks apply to <strong>any ecommerce platform</strong> — WooCommerce, BigCommerce, or custom stores. The tool recommendations are Shopify-specific; the strategies are universal.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="faq-q-text">What if my store is just starting out?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">The system was designed for stores doing <strong>$10k–$500k/month</strong>. If you're below $10k, some modules (especially advertising optimization) will be most useful once you have consistent traffic. Start with Module 04 (product descriptions) and Module 05 (email) — both work from day one.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="faq-q-text">How quickly can I see results?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">Module 02 (abandoned cart recovery) can generate <strong>measurable revenue within 7 days</strong> of implementation. Module 01 (support automation) typically saves 8+ hours by the end of Week 1. The 30-day roadmap inside the book outlines exactly what to implement each week.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="faq-q-text">Do I need technical skills to implement this?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">No coding required. Every module includes <strong>numbered, step-by-step instructions</strong> using Shopify's native tools and popular apps (Klaviyo, Gorgias, Smile.io). If you can navigate Shopify's admin panel, you can implement every system in this book.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="faq-q-text">What is your refund policy?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">We offer a <strong>full 30-day money-back guarantee</strong>, no questions asked. Implement the system for 30 days. If you don't see a single measurable result, email us and we'll refund every cent immediately. The risk is entirely on our side.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="faq-q-text">Why is the price going up to $500?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <p class="faq-answer-text">The <strong>$97 launch price</strong> is a limited-time offer to build early momentum. Once the countdown ends, the price increases to $500 permanently — which still represents significant value given the systems inside. The timer is real and will not reset.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing" style="padding-top:40px">
+  <span class="section-eyebrow reveal">One Investment. Permanent Ownership.</span>
+  <h2 class="section-title reveal">Get the Complete System</h2>
+
+  <div class="pricing-wrap reveal">
+    <div class="pricing-card">
+      <div class="pricing-badge">✦ Launch Offer — Ends When Timer Hits Zero ✦</div>
+      <div class="pricing-body">
+        <span class="pricing-eyebrow">AUTOMATEX — Complete System</span>
+        <h3 class="pricing-title">7 Systems + 5 Premium Bonuses<br>+ Full 30-Day Implementation Roadmap</h3>
+
+        <ul class="features-list">
+          <li class="feature-item"><span class="f-check">✦</span> 7 operational modules with step-by-step execution instructions</li>
+          <li class="feature-item"><span class="f-check">✦</span> 10 done-for-you email templates, ready for immediate use</li>
+          <li class="feature-item"><span class="f-check">✦</span> 4 Standard Operating Procedures for delegation</li>
+          <li class="feature-item"><span class="f-check">✦</span> 50 AI prompts built for ecommerce operators</li>
+          <li class="feature-item"><span class="f-check">✦</span> Weekly KPI Dashboard (Google Sheets — ready to use)</li>
+          <li class="feature-item"><span class="f-check">✦</span> Weekly operations checklist — 30 minutes every Monday</li>
+          <li class="feature-item"><span class="f-check">✦</span> 30-day implementation roadmap, day by day</li>
+          <li class="feature-item"><span class="f-check">✦</span> Instant access — high-quality PDF, yours forever</li>
+        </ul>
+
+        <div class="price-block">
+          <span class="price-anchor-label">Launch Pricing — Today Only</span>
+          <div class="price-row-top">
+            <span class="price-was">$500</span>
+            <span class="price-save">SAVE 81%</span>
+          </div>
+          <div class="price-row-main">
+            <span class="price-currency">$</span>
+            <span class="price-main">97</span>
+          </div>
+          <div class="price-note">One-time payment · No subscription · Permanent ownership</div>
+        </div>
+
+        <div class="roi-box">
+          💡 If your store does <strong>$20,000/month</strong> — recovering just one abandoned cart per week covers the cost of this system <strong>ten times over</strong> in the first month alone.
+        </div>
+
+        <button class="btn-buy" onclick="alert('Redirecting to checkout...')">
+          Get Instant Access — $97 →
+        </button>
+        <div class="btn-microcopy">
+          <span>🔒 Secure Checkout</span>
+          <span>⚡ Instant Access</span>
+          <span>↩️ 30-Day Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section reveal">
+  <div class="guarantee-ring">
+    <div class="guarantee-icon">🛡️</div>
+    <div class="guarantee-ring-label">Full Guarantee</div>
+  </div>
+  <h3 class="guarantee-title">30-Day Money-Back Guarantee</h3>
+  <p class="guarantee-text">
+    Implement the system for 30 days. If you don't see a single measurable result —
+    we'll refund every cent, no questions asked. The risk is entirely on our side, not yours.
+  </p>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-section reveal">
+  <h2 class="final-title">
+    The stores that win<br>
+    <span>build systems.</span><br>
+    Are you ready?
+  </h2>
+  <p class="final-sub">
+    Every day without this system costs you more than the price of it.
+    Start today.
+  </p>
+  <button class="btn-final" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">
+    Get Instant Access — $97
+  </button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AUTOMATEX</div>
+  <p class="footer-copy">© 2025 AUTOMATEX. All rights reserved.</p>
+</footer>
+
+<script>
+// PARTICLES
+const pc = document.getElementById('particles');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${4+Math.random()*6}s;animation-delay:${Math.random()*6}s;width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;`;
+  pc.appendChild(p);
+}
+
+// COUNTDOWN
+function getEnd(){
+  const s=localStorage.getItem('atx_end');
+  if(s) return parseInt(s);
+  const e=Date.now()+(23*3600+47*60+33)*1000;
+  try{localStorage.setItem('atx_end',e);}catch(x){}
+  return e;
+}
+const endTime=getEnd();
+function tick(){
+  const diff=Math.max(0,endTime-Date.now());
+  const h=Math.floor(diff/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+  document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+  if(diff===0) document.querySelector('.urgency-bar').innerHTML='🔴 <strong>Offer expired — Price is now $500</strong>';
+}
+setInterval(tick,1000); tick();
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-question').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
