@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="color-scheme:dark;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,7 @@
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="AUTOMATEX — The Ecommerce Operating System">
   <meta name="twitter:description" content="Stop running your ecommerce store with random tasks. AUTOMATEX gives you the systems, SOPs, AI prompts, templates, and 30-day roadmap to run your backend like an operator.">
+  <meta name="theme-color" content="#050505">
 
   <!-- Favicon (inline SVG — no extra file needed) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050505'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' font-weight='bold' fill='%23C9A84C'%3EA%3C/text%3E%3C/svg%3E">
@@ -49,6 +50,32 @@
      ============================================================ */
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
+
+  /* Skip link */
+  .skip-link {
+    position:absolute; top:-100%; left:16px; z-index:9999;
+    background:var(--gold); color:var(--bg); padding:8px 16px;
+    font-size:13px; font-weight:700;
+    transition:top .2s;
+  }
+  .skip-link:focus { top:8px; }
+
+  /* Scroll margin for anchor sections */
+  [id] { scroll-margin-top:80px; }
+
+  /* Focus-visible ring */
+  a:focus-visible, button:focus-visible {
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration:.01ms !important;
+      transition-duration:.01ms !important;
+    }
+  }
   body {
     background:var(--bg);
     color:var(--text);
@@ -58,7 +85,7 @@
     -webkit-font-smoothing:antialiased;
   }
   a { color:inherit; text-decoration:none; }
-  button, a { -webkit-tap-highlight-color:transparent; cursor:pointer; }
+  button, a { -webkit-tap-highlight-color:transparent; cursor:pointer; touch-action:manipulation; }
   img { max-width:100%; display:block; }
 
   /* Film grain */
@@ -137,7 +164,7 @@
     border:none; padding:10px 22px;
     font-family:'Inter',sans-serif; font-weight:800;
     font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
-    transition:all .3s var(--ease); display:inline-block;
+    transition:background .3s var(--ease), transform .3s var(--ease); display:inline-block;
   }
   .nav-cta:hover { background:var(--gold-l); transform:scale(1.03); }
 
@@ -1114,9 +1141,225 @@
     .announce { font-size:11px; gap:6px; }
   }
 
+
+  /* ============================================================
+     SMOKE DRIFT
+     ============================================================ */
+  @keyframes smokeDrift {
+    0%,100% { transform:translate(0,0) scale(1); }
+    33% { transform:translate(35px,-22px) scale(1.18); }
+    66% { transform:translate(-18px,18px) scale(.9); }
+  }
+  .hero-smoke-1,.hero-smoke-2,.hero-smoke-3 {
+    position:absolute; border-radius:50%; pointer-events:none; will-change:transform;
+  }
+  .hero-smoke-1 {
+    width:620px; height:620px;
+    background:radial-gradient(ellipse,rgba(201,168,76,.065) 0%,transparent 65%);
+    filter:blur(80px); top:-8%; right:-3%;
+    animation:smokeDrift 22s ease-in-out infinite;
+  }
+  .hero-smoke-2 {
+    width:400px; height:400px;
+    background:radial-gradient(ellipse,rgba(201,168,76,.042) 0%,transparent 65%);
+    filter:blur(65px); bottom:8%; right:30%;
+    animation:smokeDrift 30s ease-in-out infinite; animation-delay:-12s;
+  }
+  .hero-smoke-3 {
+    width:260px; height:260px;
+    background:radial-gradient(ellipse,rgba(255,255,255,.018) 0%,transparent 65%);
+    filter:blur(50px); top:38%; right:20%;
+    animation:smokeDrift 18s ease-in-out infinite; animation-delay:-5s;
+  }
+
+  /* ============================================================
+     NAV LINKS + HAMBURGER
+     ============================================================ */
+  nav { position:relative; }
+  .nav-links { display:flex; align-items:center; gap:26px; }
+  .nav-link {
+    font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--text3); font-weight:500; padding:4px 0; transition:color .3s;
+  }
+  .nav-link:hover { color:var(--gold); }
+  .nav-burger {
+    display:none; background:none; border:1px solid rgba(201,168,76,.2);
+    padding:9px 10px; color:var(--gold); cursor:pointer;
+    align-items:center; justify-content:center; transition:border-color .3s;
+  }
+  .nav-burger:hover { border-color:rgba(201,168,76,.4); }
+  .nav-mobile {
+    display:none; flex-direction:column;
+    position:absolute; top:100%; left:0; right:0; z-index:88;
+    background:rgba(5,5,5,.98); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid rgba(201,168,76,.1); padding:8px 24px 16px;
+  }
+  .nav-mobile.open { display:flex; }
+  .nml {
+    padding:14px 0; font-size:12px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--text2); border-bottom:1px solid rgba(255,255,255,.04); transition:color .3s; display:block;
+  }
+  .nml:last-child { border-bottom:none; }
+  .nml:hover { color:var(--gold); }
+
+  /* ============================================================
+     PRODUCT SHOWCASE
+     ============================================================ */
+  .showcase-section {
+    padding:96px 64px; position:relative; overflow:hidden;
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg1) 50%,var(--bg) 100%);
+  }
+  .showcase-section::before {
+    content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:540px; height:540px; border-radius:50%;
+    background:radial-gradient(ellipse,rgba(201,168,76,.052),transparent 65%);
+    filter:blur(90px); pointer-events:none;
+  }
+  .showcase-layout {
+    display:grid; grid-template-columns:210px 1fr 210px;
+    gap:18px; align-items:center; max-width:1000px; margin:0 auto;
+  }
+  .sc-col { display:flex; flex-direction:column; gap:14px; }
+  .sc-col-center { display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .sc-bottom { display:grid; grid-template-columns:1fr 1fr; gap:10px; width:100%; }
+  .float-card {
+    background:rgba(10,10,8,.84); backdrop-filter:blur(20px) saturate(110%);
+    border:1px solid rgba(201,168,76,.13);
+    box-shadow:0 8px 32px rgba(0,0,0,.45),inset 0 1px 0 rgba(201,168,76,.07);
+    padding:16px 18px; transition:border-color .4s,box-shadow .4s,transform .4s var(--ease);
+  }
+  .float-card:hover {
+    border-color:rgba(201,168,76,.28);
+    box-shadow:0 16px 48px rgba(0,0,0,.6),0 0 36px rgba(201,168,76,.07);
+    transform:translateY(-3px);
+  }
+  .fc-ico {
+    width:32px; height:32px; border:1px solid rgba(201,168,76,.15);
+    background:rgba(201,168,76,.05); display:flex; align-items:center; justify-content:center;
+    color:var(--gold); margin-bottom:9px;
+  }
+  .fc-lbl { font-size:12px; font-weight:700; color:var(--text); margin-bottom:2px; }
+  .fc-sub { font-size:10px; color:var(--text3); line-height:1.6; }
+  .showcase-laptop { width:min(340px,100%); }
+
+  /* ============================================================
+     SYSTEM SECTION
+     ============================================================ */
+  .systems-section {
+    padding:96px 64px; position:relative; overflow:hidden; background:var(--bg1);
+  }
+  .systems-section::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(201,168,76,.03),transparent);
+    pointer-events:none;
+  }
+  .sys-track {
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:40px; max-width:900px; margin:0 auto; position:relative;
+  }
+  .sys-track::before {
+    content:''; position:absolute; top:31px; left:calc(100%/6); right:calc(100%/6);
+    height:1px;
+    background:linear-gradient(to right,transparent,rgba(201,168,76,.22) 20%,rgba(201,168,76,.22) 80%,transparent);
+    pointer-events:none;
+  }
+  .sys-step { text-align:center; padding:0 8px; }
+  .sys-circle {
+    width:62px; height:62px; border-radius:50%;
+    border:1.5px solid rgba(201,168,76,.22); background:rgba(201,168,76,.04);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 20px; color:var(--gold); position:relative; z-index:1;
+    transition:border-color .4s,box-shadow .4s,background .4s;
+  }
+  .sys-step:hover .sys-circle {
+    border-color:rgba(201,168,76,.42); background:rgba(201,168,76,.09);
+    box-shadow:0 0 30px rgba(201,168,76,.12);
+  }
+  .sys-word {
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:3px;
+    text-transform:uppercase; color:var(--gold); display:block; margin-bottom:9px;
+  }
+  .sys-title { font-size:15px; font-weight:700; color:var(--text); margin-bottom:9px; line-height:1.3; }
+  .sys-body { font-size:13px; color:var(--text3); line-height:1.85; font-weight:300; }
+
+  /* ============================================================
+     ROADMAP
+     ============================================================ */
+  .roadmap-section { padding:96px 64px; background:var(--bg); }
+  .rm-track {
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:0; max-width:1100px; margin:0 auto; position:relative;
+  }
+  .rm-track::before {
+    content:''; position:absolute; top:30px; left:calc(100%/8); right:calc(100%/8);
+    height:1px;
+    background:linear-gradient(to right,transparent,rgba(201,168,76,.2) 15%,rgba(201,168,76,.2) 85%,transparent);
+    pointer-events:none;
+  }
+  .rm-step { padding:0 12px; text-align:center; }
+  .rm-badge {
+    width:60px; height:60px; border-radius:50%;
+    border:1.5px solid rgba(201,168,76,.22); background:var(--bg1);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    margin:0 auto 18px; position:relative; z-index:1;
+    transition:border-color .4s,box-shadow .4s,background .4s;
+  }
+  .rm-step:hover .rm-badge {
+    border-color:rgba(201,168,76,.42); background:rgba(201,168,76,.06);
+    box-shadow:0 0 26px rgba(201,168,76,.12);
+  }
+  .rm-wk { font-family:'Cinzel',serif; font-size:7px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-d); line-height:1.2; }
+  .rm-n { font-family:'Playfair Display',serif; font-size:19px; font-weight:900; color:var(--gold); line-height:1.1; }
+  .rm-card {
+    background:var(--bg1); border:1px solid rgba(201,168,76,.08); padding:20px 14px;
+    transition:border-color .4s,box-shadow .4s;
+  }
+  .rm-step:hover .rm-card { border-color:rgba(201,168,76,.18); box-shadow:0 8px 32px rgba(0,0,0,.4); }
+  .rm-title { font-size:13px; font-weight:700; color:var(--text); margin-bottom:12px; line-height:1.4; }
+  .rm-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .rm-list li {
+    display:flex; align-items:flex-start; gap:7px;
+    font-size:11px; color:var(--text3); line-height:1.7; font-weight:300;
+  }
+  .rm-dot { width:3px; height:3px; border-radius:50%; background:var(--gold-d); flex-shrink:0; margin-top:6px; }
+
+  /* ============================================================
+     REVEAL UPGRADE (opacity + translateY)
+     ============================================================ */
+  .reveal {
+    opacity:0; transform:translateY(20px);
+    transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* New section responsive */
+  @media(max-width:1100px){
+    .showcase-layout { grid-template-columns:180px 1fr 180px; }
+    .rm-track { grid-template-columns:repeat(2,1fr); gap:12px; }
+    .rm-track::before { display:none; }
+  }
+  @media(max-width:960px){
+    .nav-links { display:none; }
+    .nav-burger { display:flex; }
+    .nav-offer { display:none; }
+    .showcase-section,.systems-section,.roadmap-section { padding:72px 24px; }
+    .showcase-layout { grid-template-columns:1fr; gap:16px; }
+    .sc-col { flex-direction:row; flex-wrap:wrap; gap:10px; }
+    .float-card { flex:1; min-width:140px; }
+    .sc-col-center { order:-1; }
+    .sys-track { grid-template-columns:1fr; gap:24px; }
+    .sys-track::before { display:none; }
+  }
+  @media(max-width:640px){
+    .rm-track { grid-template-columns:1fr; }
+    .float-card { min-width:120px; }
+  }
+
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<main id="main-content">
 
 <!-- =====================================================
      ANNOUNCEMENT BAR
@@ -1124,9 +1367,9 @@
 <div class="announce">
   <span>AUTOMATEX is currently available at the launch price</span>
   <span class="sep">·</span>
-  <span class="hl">$250 today</span>
+  <span class="hl">$70 today</span>
   <span class="sep">·</span>
-  <span>Price returns to $500 when the launch ends</span>
+  <span>Price returns to $100 when the launch ends</span>
   <span class="sep">·</span>
   <a class="announce-link" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">Get Access →</a>
 </div>
@@ -1135,44 +1378,60 @@
      NAV
      ===================================================== -->
 <nav>
-  <div class="nav-logo">AUTOMATEX</div>
-  <div class="nav-offer">
-    <span class="was">$500</span>
-    <span style="color:var(--text3)">/</span>
-    <span class="now">$250</span>
-    <span class="save">50% OFF</span>
+  <a class="nav-logo" href="#">AUTOMATEX</a>
+  <div class="nav-links">
+    <a class="nav-link" href="#home">Home</a>
+    <a class="nav-link" href="#inside">Inside</a>
+    <a class="nav-link" href="#systems">Systems</a>
+    <a class="nav-link" href="#roadmap">Roadmap</a>
+    <a class="nav-link" href="#pricing">Pricing</a>
+    <a class="nav-link" href="#faq">FAQ</a>
   </div>
-  <a class="nav-cta" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">Get Instant Access</a>
+  <a class="nav-cta" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">Get Access</a>
+  <button class="nav-burger" id="navBurger" aria-label="Open navigation">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+  </button>
+  <div class="nav-mobile" id="navMenu">
+    <a class="nml" href="#home">Home</a>
+    <a class="nml" href="#inside">Inside</a>
+    <a class="nml" href="#systems">Systems</a>
+    <a class="nml" href="#roadmap">Roadmap</a>
+    <a class="nml" href="#pricing">Pricing</a>
+    <a class="nml" href="#faq">FAQ</a>
+  </div>
 </nav>
 
 <!-- =====================================================
      HERO — Dark cinematic, laptop in room, reference-inspired
      ===================================================== -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-env"></div>
   <div class="hero-grid"></div>
   <div class="hero-desk"></div>
+  <div class="hero-smoke-1"></div>
+  <div class="hero-smoke-2"></div>
+  <div class="hero-smoke-3"></div>
 
   <!-- LEFT: COPY -->
   <div class="hero-text">
     <span class="h-label">The Ecommerce Operating System</span>
 
     <h1 class="hero-headline">
-      Your Store<br>Isn't Broken.<br>
-      It's <span class="accent">Missing Systems.</span>
+      Your store runs<br>on memory.<br>
+      <span class="accent">Systems change that.</span>
     </h1>
 
     <div class="hero-divider"></div>
 
     <p class="hero-sub">
-      AUTOMATEX gives ecommerce operators the <strong>systems, SOPs, templates, AI prompts, workflows, and roadmap</strong> to organize their backend before scaling traffic.
+      AUTOMATEX gives Shopify operators the <strong>SOPs, templates, AI prompts, automation workflows, and a 30-day roadmap</strong> to run daily operations with structure instead of guesswork.
     </p>
 
     <div class="hero-cta-group">
       <a class="btn btn-lg" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">
         Get Instant Access
       </a>
-      <p class="btn-sub">Build systems before buying more traffic.</p>
+      <p class="btn-sub">Fix the backend before you scale traffic.</p>
     </div>
 
     <div class="hero-positioning">
@@ -1270,11 +1529,11 @@
 <!-- =====================================================
      PROBLEM SECTION
      ===================================================== -->
-<section class="section problem-bg">
+<section class="section problem-bg" id="home-problems">
   <div class="section-inner">
     <span class="eyebrow reveal">The Real Problem</span>
-    <h2 class="section-title reveal">You Keep Buying Traffic.<br>But the <span class="accent">Backend Is Still Broken.</span></h2>
-    <p class="section-sub reveal">More ads sent to a messy backend creates more chaos, not more revenue. Here is what that actually looks like:</p>
+    <h2 class="section-title reveal">More traffic won't fix a backend<br>built on <span class="accent">memory and scattered tools.</span></h2>
+    <p class="section-sub reveal">Most ecommerce stores run on scattered tools and last-minute decisions. At a certain point, that stops being manageable.</p>
 
     <div class="prob-grid">
       <div class="prob-card reveal d1">
@@ -1306,6 +1565,129 @@
         <span class="prob-ico">⚠️</span>
         <div class="prob-title">Scaling Traffic Makes It Worse</div>
         <div class="prob-body">You think more traffic will fix the revenue problem. But when more customers hit a disorganized backend, you get more chaos. Systems need to exist before you scale.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     PRODUCT SHOWCASE
+     ===================================================== -->
+<section class="showcase-section">
+  <div class="section-inner">
+    <span class="eyebrow reveal">The Complete System</span>
+    <h2 class="section-title reveal">Seven modules.<br>One <span class="accent">operating system</span> for your Shopify backend.</h2>
+    <p class="section-sub reveal">Seven modules, 50+ prompts, and a 30-day roadmap — built around how ecommerce stores actually run.</p>
+
+    <div class="showcase-layout reveal">
+      <div class="sc-col">
+        <div class="float-card">
+          <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div>
+          <div class="fc-lbl">SOPs</div>
+          <div class="fc-sub">Pre-written procedures for every key store operation</div>
+        </div>
+        <div class="float-card">
+          <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+          <div class="fc-lbl">Automation Workflows</div>
+          <div class="fc-sub">Visual blueprints that run cart recovery and fulfillment ops</div>
+        </div>
+      </div>
+
+      <div class="sc-col-center">
+        <div class="showcase-laptop" style="animation:laptopFloat 12s ease-in-out infinite;">
+          <div class="laptop-screen-wrap">
+            <div class="laptop-camera"></div>
+            <div class="laptop-screen">
+              <div class="sc">
+                <div class="sc-topbar">
+                  <span class="sc-logo">AUTOMATEX</span>
+                  <div class="sc-status"><div class="sc-dot"></div><span>ACTIVE</span></div>
+                </div>
+                <div>
+                  <div class="sc-section-lbl">Operations Dashboard</div>
+                  <div class="sc-stats">
+                    <div class="sc-stat"><span class="sc-stat-n">07</span><span class="sc-stat-l">Systems</span></div>
+                    <div class="sc-stat"><span class="sc-stat-n">50+</span><span class="sc-stat-l">Prompts</span></div>
+                    <div class="sc-stat"><span class="sc-stat-n">30</span><span class="sc-stat-l">Day Plan</span></div>
+                    <div class="sc-stat"><span class="sc-stat-n">100+</span><span class="sc-stat-l">Assets</span></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="sc-section-lbl">System Status</div>
+                  <div class="sc-bars">
+                    <div class="sc-bar-row"><span class="sc-bl">Operations</span><div class="sc-track"><div class="sc-fill" style="width:88%"></div></div><span class="sc-bp">88%</span></div>
+                    <div class="sc-bar-row"><span class="sc-bl">Marketing</span><div class="sc-track"><div class="sc-fill" style="width:74%"></div></div><span class="sc-bp">74%</span></div>
+                    <div class="sc-bar-row"><span class="sc-bl">Fulfillment</span><div class="sc-track"><div class="sc-fill" style="width:92%"></div></div><span class="sc-bp">92%</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+        <div class="sc-bottom">
+          <div class="float-card">
+            <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+            <div class="fc-lbl">Shopify Templates</div>
+            <div class="fc-sub">Ready-to-use for product, order, and support ops</div>
+          </div>
+          <div class="float-card">
+            <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+            <div class="fc-lbl">Tracking Sheets</div>
+            <div class="fc-sub">KPIs and weekly operations at a glance</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sc-col">
+        <div class="float-card">
+          <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 15h.01M16 15h.01"/></svg></div>
+          <div class="fc-lbl">AI Prompts</div>
+          <div class="fc-sub">50+ prompts for product pages, support, marketing, and ops</div>
+        </div>
+        <div class="float-card">
+          <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div>
+          <div class="fc-lbl">30-Day Roadmap</div>
+          <div class="fc-sub">Day-by-day plan from setup to fully operational</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     SYSTEM SECTION
+     ===================================================== -->
+<section class="systems-section" id="systems">
+  <div class="section-inner">
+    <span class="eyebrow reveal">The Process</span>
+    <h2 class="section-title reveal">Three steps to a backend<br>that runs <span class="accent">without daily input.</span></h2>
+    <p class="section-sub reveal">Three phases. One path from scattered daily tasks to a store that runs on documented systems.</p>
+
+    <div class="sys-track">
+      <div class="sys-step reveal d1">
+        <div class="sys-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m6.08 9.5-3.5 1.59a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83L18 9.5"/><path d="m6.08 14.5-3.5 1.59a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83L18 14.5"/></svg>
+        </div>
+        <span class="sys-word">Organize</span>
+        <div class="sys-title">Turn scattered tasks into a clear structure</div>
+        <div class="sys-body">Map your current operations, identify what is missing, and install the AUTOMATEX framework across your store backend.</div>
+      </div>
+      <div class="sys-step reveal d2">
+        <div class="sys-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+        </div>
+        <span class="sys-word">Automate</span>
+        <div class="sys-title">Build workflows that run without daily input</div>
+        <div class="sys-body">Deploy automation blueprints for cart recovery, fulfillment notifications, and follow-up sequences. Stop repeating the same manual work every week.</div>
+      </div>
+      <div class="sys-step reveal d3">
+        <div class="sys-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <span class="sys-word">Optimize</span>
+        <div class="sys-title">Track what matters and improve with clarity</div>
+        <div class="sys-body">Use the KPI dashboard and weekly checklist to catch bottlenecks early and keep every part of your store running consistently.</div>
       </div>
     </div>
   </div>
@@ -1433,7 +1815,7 @@
 <!-- =====================================================
      WHAT'S INSIDE
      ===================================================== -->
-<section class="section inside-section">
+<section class="section inside-section" id="inside">
   <div class="section-inner">
     <span class="eyebrow reveal">Inside AUTOMATEX</span>
     <h2 class="section-title reveal">Every Module. Every Asset.<br><span class="accent">Ready to Implement.</span></h2>
@@ -1501,44 +1883,58 @@
 </section>
 
 <!-- =====================================================
-     HOW IT WORKS
+     ROADMAP
      ===================================================== -->
-<section class="section hiw-section">
+<section class="roadmap-section" id="roadmap">
   <div class="section-inner">
-    <span class="eyebrow reveal">How It Works</span>
-    <h2 class="section-title reveal">Six Steps from Chaotic Operations<br>to a <span class="accent">Structured Backend</span></h2>
-    <p class="section-sub reveal">The 30-day roadmap inside AUTOMATEX walks you through this exact sequence. You do not figure it out alone.</p>
+    <span class="eyebrow reveal">30-Day Plan</span>
+    <h2 class="section-title reveal">Build the whole system<br><span class="accent">in 30 days.</span></h2>
+    <p class="section-sub reveal">The included roadmap breaks implementation into four focused weeks. Each week has a clear target so you set up the right thing at the right time.</p>
 
-    <div class="hiw-track">
-      <div class="hiw-step reveal d1">
-        <div class="hiw-num">01</div>
-        <div class="hiw-title">Audit Your Current Operations</div>
-        <div class="hiw-body">Identify exactly where your backend is broken using the AUTOMATEX audit framework. See what is missing before you try to fix it.</div>
+    <div class="rm-track">
+      <div class="rm-step reveal d1">
+        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">01</span></div>
+        <div class="rm-card">
+          <div class="rm-title">Audit and Organize</div>
+          <ul class="rm-list">
+            <li><span class="rm-dot"></span>Map current operations and identify gaps</li>
+            <li><span class="rm-dot"></span>Prioritize the highest-impact fixes</li>
+            <li><span class="rm-dot"></span>Install the AUTOMATEX structure</li>
+          </ul>
+        </div>
       </div>
-      <div class="hiw-step reveal d2">
-        <div class="hiw-num">02</div>
-        <div class="hiw-title">Apply SOPs and Templates</div>
-        <div class="hiw-body">Deploy the pre-written SOPs and email templates directly into your store. Set up customer service replies, fulfillment processes, and email workflows.</div>
+      <div class="rm-step reveal d2">
+        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">02</span></div>
+        <div class="rm-card">
+          <div class="rm-title">Install Systems and SOPs</div>
+          <ul class="rm-list">
+            <li><span class="rm-dot"></span>Deploy SOPs for core store operations</li>
+            <li><span class="rm-dot"></span>Activate email and support templates</li>
+            <li><span class="rm-dot"></span>Set up fulfillment checklists</li>
+          </ul>
+        </div>
       </div>
-      <div class="hiw-step reveal d3">
-        <div class="hiw-num">03</div>
-        <div class="hiw-title">Build Your Core Workflows</div>
-        <div class="hiw-body">Use the automation blueprints to map and activate the workflows that handle abandoned carts, follow-ups, and fulfillment without your daily input.</div>
+      <div class="rm-step reveal d3">
+        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">03</span></div>
+        <div class="rm-card">
+          <div class="rm-title">Automate Workflows</div>
+          <ul class="rm-list">
+            <li><span class="rm-dot"></span>Build abandoned cart recovery</li>
+            <li><span class="rm-dot"></span>Set up post-purchase sequences</li>
+            <li><span class="rm-dot"></span>Cut daily manual tasks in half</li>
+          </ul>
+        </div>
       </div>
-      <div class="hiw-step reveal d4">
-        <div class="hiw-num">04</div>
-        <div class="hiw-title">Automate With AI Prompts</div>
-        <div class="hiw-body">Use the 50+ AI prompts to write better content, faster. Product descriptions, support replies, ad copy, and internal planning in a fraction of the usual time.</div>
-      </div>
-      <div class="hiw-step reveal d5">
-        <div class="hiw-num">05</div>
-        <div class="hiw-title">Execute the 30-Day Roadmap</div>
-        <div class="hiw-body">Follow the day-by-day implementation plan. Each day has a clear task. By day 30, every major system in your store is running on structure, not memory.</div>
-      </div>
-      <div class="hiw-step reveal d6">
-        <div class="hiw-num">06</div>
-        <div class="hiw-title">Scale on Solid Ground</div>
-        <div class="hiw-body">With a systemized backend, you can scale traffic with confidence. More customers hit an organized operation that is built to handle growth consistently.</div>
+      <div class="rm-step reveal d4">
+        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">04</span></div>
+        <div class="rm-card">
+          <div class="rm-title">Track and Optimize</div>
+          <ul class="rm-list">
+            <li><span class="rm-dot"></span>Activate the KPI tracking dashboard</li>
+            <li><span class="rm-dot"></span>Run your first weekly ops checklist</li>
+            <li><span class="rm-dot"></span>Identify next optimization areas</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -1674,16 +2070,16 @@
 <!-- =====================================================
      PRICING
      ===================================================== -->
-<section class="section pricing-section">
+<section class="section pricing-section" id="pricing">
   <div class="section-inner" style="text-align:center;">
     <span class="eyebrow reveal">The Investment</span>
-    <h2 class="section-title reveal">One System.<br><span class="accent">One-Time Payment.</span></h2>
-    <p class="section-sub reveal">No monthly fees. No subscription. Pay once and use AUTOMATEX to run a more organized store from this point forward.</p>
+    <h2 class="section-title reveal">The complete AUTOMATEX system.<br><span class="accent">Pay once.</span></h2>
+    <p class="section-sub reveal">No monthly fees. No subscription. One payment gets you the full system — SOPs, templates, workflows, AI prompts, and the 30-day roadmap.</p>
 
     <div class="pricing-wrap reveal">
       <div class="pricing-glow"></div>
       <div class="pricing-card">
-        <div class="pricing-label">⚡ Launch Offer — Available Now at $250</div>
+        <div class="pricing-label">⚡ Launch Offer — Available Now at $70</div>
         <div class="pricing-body">
           <div class="pricing-title">AUTOMATEX — The Ecommerce Operating System</div>
 
@@ -1734,19 +2130,19 @@
             <div class="val-row val-total">
               <div class="val-total-name">Launch Offer Total</div>
               <div class="val-total-norm">$827</div>
-              <div class="val-total-yours">$250</div>
+              <div class="val-total-yours">$70</div>
             </div>
           </div>
 
           <div class="price-block" style="margin-top:36px;">
             <span class="price-lbl">Your investment today</span>
             <div class="price-row">
-              <span class="price-was">$500</span>
-              <span class="price-save">SAVE 50%</span>
+              <span class="price-was">$100</span>
+              <span class="price-save">SAVE 30%</span>
             </div>
             <div class="price-main-row">
               <span class="price-cur">$</span>
-              <span class="price-main">250</span>
+              <span class="price-main">70</span>
             </div>
             <p class="price-note">One-time payment &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; No upsells</p>
           </div>
@@ -1756,7 +2152,7 @@
           </div>
 
           <a class="btn btn-full" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">
-            Get Instant Access — $250
+            Get Instant Access — $70
           </a>
           <div class="buy-micro">
             <span>🔒 Secure checkout</span>
@@ -1772,91 +2168,91 @@
 <!-- =====================================================
      FAQ
      ===================================================== -->
-<section class="faq-section">
+<section class="faq-section" id="faq">
   <div class="section-inner">
-    <span class="eyebrow reveal">Questions</span>
-    <h2 class="section-title reveal">Frequently Asked Questions</h2>
+    <span class="eyebrow reveal">Before You Buy</span>
+    <h2 class="section-title reveal">Questions before you get access</h2>
     <div class="g-rule"></div>
 
     <div class="faq-list">
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">Is AUTOMATEX only for Shopify stores?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">Who is AUTOMATEX for?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">AUTOMATEX is designed with <strong>Shopify operators in mind</strong>, but the systems, SOPs, and frameworks apply to any ecommerce business regardless of platform. The operational problems it solves — messy fulfillment, no SOP for support, unstructured email, no delegation — exist on every platform. If you run an online store and want better backend structure, AUTOMATEX applies to you.</p>
+          <p class="faq-at">It is for <strong>Shopify store owners, ecommerce operators, and digital business owners</strong> who want to organize their operations and stop running everything manually. If your store depends on your memory and your daily presence, AUTOMATEX gives you the structure to change that.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">Is this a course? Do I watch videos or take lessons?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">Is this only for Shopify?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">No. AUTOMATEX is not a course. There are <strong>no videos to watch, no modules to sit through, and no lessons to complete</strong>. It is a digital operating system — a set of ready-to-use documents, templates, SOPs, workflows, and prompts that you implement directly into your store. You open it, you use it, you implement it.</p>
+          <p class="faq-at">AUTOMATEX is built mainly for Shopify store owners, but <strong>many of the systems, SOPs, prompts, and workflows also apply to other ecommerce businesses</strong>. The operational problems it addresses — no documented processes, manual work, no delegation structure — exist across every platform.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">Is this just a PDF? What format does it come in?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">Do I need technical experience?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">AUTOMATEX is a <strong>complete digital product delivered through Gumroad</strong> after purchase. It includes structured documents, templates, workflow maps, and a 30-day roadmap in accessible formats you can open, read, copy, and use immediately. It is substantially more than a PDF — it is a full operating system with multiple components built to work together.</p>
+          <p class="faq-at">No. The system is designed to be <strong>practical and easy to follow without technical knowledge</strong>. The SOPs are pre-written. The workflows are visual. The AI prompts work with any AI tool. You do not need to be a developer or automation expert to use AUTOMATEX from day one.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">Do I need technical skills or special tools?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">What do I receive after purchase?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">No technical skills required. AUTOMATEX is designed to be <strong>practical and implementable without technical knowledge</strong>. The SOPs and templates are written clearly. The workflow blueprints are visual and easy to follow. The AI prompts work with any AI tool. You do not need coding skills, technical setup, or special software to start using it today.</p>
+          <p class="faq-at">You receive the <strong>complete AUTOMATEX digital operating system</strong> — 7 ecommerce operation systems, standard operating procedures, 50+ AI prompts, done-for-you email templates, automation workflow blueprints, a KPI dashboard, weekly checklists, and a 30-day implementation roadmap. Everything is delivered instantly through Gumroad.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">How fast can I start using it after purchase?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">Is this a course or a system?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">Immediately. After you complete your purchase on Gumroad, you receive <strong>instant access to all AUTOMATEX assets</strong>. There is no wait, no approval, and no shipping. You can open and begin using the templates and SOPs on the same day you purchase.</p>
+          <p class="faq-at">It is not a traditional course. <strong>There are no videos, no lessons, and no modules to sit through.</strong> AUTOMATEX is a practical operating system — templates, SOPs, workflows, prompts, and an implementation roadmap that you open, apply, and run inside your store. You implement it, not consume it.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">What exactly do I receive after purchase?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">How do I access the product?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">You receive <strong>instant access to the full AUTOMATEX digital operating system</strong>, which includes: 7 ecommerce operation systems, 4 standard operating procedures, 50+ AI prompts, 10 done-for-you email templates, automation workflow blueprints, a KPI dashboard with weekly checklist, a 30-day implementation roadmap, and daily, weekly, and monthly operations checklists. Everything is delivered through Gumroad.</p>
+          <p class="faq-at">After purchase, you receive <strong>instant digital access through Gumroad</strong>. No waiting, no shipping, no approval. You can open and begin using the system on the same day you buy.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">Is AUTOMATEX beginner-friendly?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">I am just starting my store. Is AUTOMATEX still useful?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">Yes. If you are just starting your ecommerce store, AUTOMATEX is actually <strong>ideal for building your operations correctly from day one</strong> rather than having to fix a mess later. The 30-day roadmap gives you a clear sequence to follow. You do not need prior experience with systems or operations management — the product is written to be understood and implemented immediately.</p>
+          <p class="faq-at">Yes. Building your operations correctly from the start is <strong>far easier than fixing a mess later</strong>. The 30-day roadmap gives you a clear sequence to follow. Most store owners wish they had a system like this before they started scaling.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-qt">Is AUTOMATEX for solo store owners or ecommerce agencies?</span>
+        <button class="faq-q" aria-expanded="false">
+          <span class="faq-qt">Is AUTOMATEX for solo operators or teams?</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">AUTOMATEX is built <strong>primarily for individual store owners and small ecommerce operators</strong> who run their store themselves or with a small team. It is not designed specifically for agencies managing multiple clients. Solo operators benefit from having every system documented so they can delegate when ready. Small teams benefit from consistent processes that everyone follows.</p>
+          <p class="faq-at">Both. Solo operators benefit most from having everything documented so they can <strong>delegate when ready</strong>. Small teams benefit from consistent processes everyone follows. AUTOMATEX is not built for agencies managing multiple client stores.</p>
         </div>
       </div>
 
@@ -1883,24 +2279,26 @@
      ===================================================== -->
 <section class="final-section">
   <h2 class="final-title reveal">
-    Your Store Does Not Need<br>
-    More <em>Chaos.</em><br>
-    It Needs <span class="accent">Systems.</span>
+    Stop running your store<br>
+    from <em>memory.</em><br>
+    <span class="accent">Start with a system.</span>
   </h2>
   <p class="final-sub reveal">
-    Stop running a real business with no infrastructure behind it. AUTOMATEX gives you the operating system your store has been missing — built for ecommerce, ready to implement.
+    Every day without documented systems is a day your store runs on luck and habit. AUTOMATEX gives you the operating system to run ecommerce operations on structure.
   </p>
   <a class="btn btn-xl reveal" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">
     Get Instant Access — $250
   </a>
   <p class="btn-sub reveal" style="margin-top:14px;">
-    Build systems before buying more traffic.
+    Fix the backend before you scale traffic.
   </p>
 </section>
 
 <!-- =====================================================
      FOOTER
      ===================================================== -->
+</main>
+
 <footer>
   <div class="foot-logo">AUTOMATEX</div>
   <div class="foot-copy">© 2026 AUTOMATEX. All rights reserved. Digital product. Instant access via Gumroad.</div>
@@ -1910,20 +2308,36 @@
      SCRIPTS
      ===================================================== -->
 <script>
-  /* --- Scroll Reveal (opacity only — reference-video inspired stillness) --- */
+  /* --- Scroll Reveal (opacity + translateY) --- */
   const io = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
   );
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  /* --- Mobile Nav Hamburger --- */
+  const burger = document.getElementById('navBurger');
+  const menu   = document.getElementById('navMenu');
+  if (burger && menu) {
+    burger.addEventListener('click', () => menu.classList.toggle('open'));
+    document.querySelectorAll('.nml').forEach(link =>
+      link.addEventListener('click', () => menu.classList.remove('open'))
+    );
+  }
+
   /* --- FAQ Accordion --- */
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
       const open = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!open) item.classList.add('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      });
+      if (!open) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
     });
   });
 
