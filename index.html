@@ -867,6 +867,55 @@
     box-shadow:inset 0 0 30px rgba(0,0,0,.5);
   }
   .prev-frame img { width:100%; height:100%; object-fit:contain; }
+
+  /* ── Preview mock screens (replaces English screenshot images) ── */
+  .pm-screen {
+    width:100%; height:100%;
+    background:linear-gradient(160deg,#0c0c09,#080806);
+    display:flex; flex-direction:column;
+    padding:14px; gap:7px;
+    font-family:'Cairo','Tajawal',sans-serif;
+    color:#c0b8a8; font-size:9px;
+    overflow:hidden; direction:rtl;
+  }
+  .pm-bar {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:8px;
+    border-bottom:1px solid rgba(201,168,76,.15);
+    flex-shrink:0;
+  }
+  .pm-logo { color:#C9A84C; font-size:8px; letter-spacing:3px; font-family:'Cinzel',serif; }
+  .pm-tag  { font-size:7px; color:#6E6660; letter-spacing:1px; }
+  .pm-dot2 { width:5px; height:5px; border-radius:50%; background:#7fb069; display:inline-block; margin-left:4px; box-shadow:0 0 5px #7fb069; }
+  .pm-h1   { color:#F0EBE0; font-size:13px; font-weight:700; line-height:1.35; margin:4px 0 3px; }
+  .pm-gold { color:#C9A84C; }
+  .pm-sub  { font-size:8px; color:#6E6660; line-height:1.5; margin-bottom:5px; }
+  .pm-btn  {
+    background:linear-gradient(135deg,#A07830,#C9A84C,#E8C96A);
+    color:#050505; font-size:7px; font-weight:900;
+    padding:5px 8px; text-align:center; letter-spacing:.4px;
+  }
+  .pm-price-row { display:flex; align-items:center; gap:7px; margin-top:5px; }
+  .pm-was  { color:#6E6660; text-decoration:line-through; font-size:9px; }
+  .pm-now  { color:#C9A84C; font-size:17px; font-weight:900; font-family:'Playfair Display',serif; line-height:1; }
+  .pm-save { font-size:7px; color:#7fb069; }
+  .pm-row  {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:4px 0; border-bottom:1px solid rgba(201,168,76,.07);
+    font-size:8px;
+  }
+  .pm-row:last-child { border:none; }
+  .pm-inc  { color:#C9A84C; font-size:7px; }
+  .pm-badge2 {
+    display:inline-block; background:rgba(201,168,76,.1);
+    border:1px solid rgba(201,168,76,.2);
+    color:#C9A84C; font-size:6px; padding:2px 5px;
+  }
+  .pm-step { display:flex; gap:7px; padding:5px 0; border-bottom:1px solid rgba(201,168,76,.07); }
+  .pm-step:last-child { border:none; }
+  .pm-sn   { color:#C9A84C; font-size:12px; font-weight:900; line-height:1; flex-shrink:0; }
+  .pm-st   { color:#F0EBE0; font-size:8px; font-weight:700; margin-bottom:2px; }
+  .pm-sd   { color:#6E6660; font-size:7px; line-height:1.4; }
   .prev-title { font-size:13px; font-weight:700; color:var(--text); margin-bottom:5px; }
   .prev-note  { font-size:11px; color:var(--text2); line-height:1.6; }
 
@@ -1582,7 +1631,7 @@
               <span class="sc-logo">AUTOMATEX</span>
               <div class="sc-status">
                 <div class="sc-dot"></div>
-                <span>ACTIVE</span>
+                <span>نشط</span>
               </div>
             </div>
 
@@ -1727,7 +1776,7 @@
               <div class="sc">
                 <div class="sc-topbar">
                   <span class="sc-logo">AUTOMATEX</span>
-                  <div class="sc-status"><div class="sc-dot"></div><span>ACTIVE</span></div>
+                  <div class="sc-status"><div class="sc-dot"></div><span>نشط</span></div>
                 </div>
                 <div>
                   <div class="sc-section-lbl">لوحة العمليات</div>
@@ -2160,7 +2209,23 @@
       <div class="prev-card reveal d1">
         <span class="prev-label">صفحة الهبوط</span>
         <div class="prev-frame">
-          <img src="preview_1.png" alt="AUTOMATEX — قسم CTA" loading="lazy">
+          <div class="pm-screen">
+            <div class="pm-bar">
+              <span class="pm-logo">AUTOMATEX</span>
+              <span><span class="pm-dot2"></span><span style="font-size:7px;color:#7fb069;letter-spacing:1px">نشط</span></span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-size:7px;color:#C9A84C;letter-spacing:2px;margin-bottom:6px;">نظام التشغيل</div>
+              <div class="pm-h1">حوّل فوضى مشروعك<br>إلى <span class="pm-gold">نظام تشغيل واضح.</span></div>
+              <div class="pm-sub">قوالب · أوامر AI · خطة 30 يومًا</div>
+              <div class="pm-btn">احصل على AUTOMATEX — 70$</div>
+              <div class="pm-price-row">
+                <span class="pm-was">100$</span>
+                <span class="pm-now">70$</span>
+                <span class="pm-save">وفّر 30$</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="prev-title">تجربة شراء واضحة</div>
         <div class="prev-note">دفع آمن عبر Gumroad. وصول فوري بعد الدفع.</div>
@@ -2168,7 +2233,22 @@
       <div class="prev-card reveal d2">
         <span class="prev-label">نظرة عامة على القيمة</span>
         <div class="prev-frame">
-          <img src="preview_2.png" alt="AUTOMATEX — منطق العرض" loading="lazy">
+          <div class="pm-screen">
+            <div class="pm-bar">
+              <span class="pm-logo">AUTOMATEX</span>
+              <span class="pm-badge2">قيمة الحزمة</span>
+            </div>
+            <div style="font-size:8px;color:#C9A84C;font-weight:700;margin:2px 0 5px;">ما يشمله النظام</div>
+            <div class="pm-row"><span>7 أنظمة تشغيل</span><span class="pm-inc">◆ مشمول</span></div>
+            <div class="pm-row"><span>50+ أمر AI</span><span class="pm-inc">◆ مشمول</span></div>
+            <div class="pm-row"><span>10 قوالب إيميل</span><span class="pm-inc">◆ مشمول</span></div>
+            <div class="pm-row"><span>4 إجراءات SOPs</span><span class="pm-inc">◆ مشمول</span></div>
+            <div class="pm-row"><span>خطة 30 يومًا</span><span class="pm-inc">◆ مشمول</span></div>
+            <div style="margin-top:6px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,168,76,.15);padding-top:6px;">
+              <span style="font-size:8px;color:#6E6660;">سعر الإطلاق</span>
+              <span style="color:#C9A84C;font-size:16px;font-weight:900;font-family:'Playfair Display',serif;">70$</span>
+            </div>
+          </div>
         </div>
         <div class="prev-title">منطق العرض وتفصيل القيمة</div>
         <div class="prev-note">كل أصل موضح مع مبرر القيمة الواضح.</div>
@@ -2176,7 +2256,25 @@
       <div class="prev-card reveal d3">
         <span class="prev-label">بعد الشراء</span>
         <div class="prev-frame">
-          <img src="preview_3.png" alt="AUTOMATEX — بعد الشراء" loading="lazy">
+          <div class="pm-screen">
+            <div class="pm-bar">
+              <span class="pm-logo">AUTOMATEX</span>
+              <span class="pm-tag">بعد الشراء</span>
+            </div>
+            <div style="font-size:8px;color:#C9A84C;font-weight:700;margin:2px 0 6px;">عملية وصول بسيطة</div>
+            <div class="pm-step">
+              <span class="pm-sn">01</span>
+              <div><div class="pm-st">ادفع بأمان عبر Gumroad</div><div class="pm-sd">دفعة واحدة · بدون اشتراك</div></div>
+            </div>
+            <div class="pm-step">
+              <span class="pm-sn">02</span>
+              <div><div class="pm-st">احصل على الوصول فورًا</div><div class="pm-sd">تحميل رقمي فوري بعد الدفع</div></div>
+            </div>
+            <div class="pm-step">
+              <span class="pm-sn">03</span>
+              <div><div class="pm-st">ابدأ باتباع الخطة</div><div class="pm-sd">خطة 30 يومًا جاهزة من اليوم الأول</div></div>
+            </div>
+          </div>
         </div>
         <div class="prev-title">عملية وصول بسيطة من 3 خطوات</div>
         <div class="prev-note">ادفع ← صل ← اتبع الخطة. لا شيء معقد.</div>
@@ -2184,7 +2282,20 @@
       <div class="prev-card reveal d4">
         <span class="prev-label">جدول الأصول</span>
         <div class="prev-frame">
-          <img src="preview_4.png" alt="AUTOMATEX — جدول القيمة" loading="lazy">
+          <div class="pm-screen">
+            <div class="pm-bar">
+              <span class="pm-logo">AUTOMATEX</span>
+              <span class="pm-tag">الوحدات السبع</span>
+            </div>
+            <div style="font-size:8px;color:#C9A84C;font-weight:700;margin:2px 0 5px;">جدول الأصول الكاملة</div>
+            <div class="pm-row"><span>01 — أنظمة التشغيل</span><span class="pm-badge2">7 أنظمة</span></div>
+            <div class="pm-row"><span>02 — إجراءات SOPs</span><span class="pm-badge2">4 إجراءات</span></div>
+            <div class="pm-row"><span>03 — أوامر AI</span><span class="pm-badge2">50+</span></div>
+            <div class="pm-row"><span>04 — قوالب الإيميل</span><span class="pm-badge2">10 قوالب</span></div>
+            <div class="pm-row"><span>05 — مخططات سير العمل</span><span class="pm-badge2">آلية</span></div>
+            <div class="pm-row"><span>06 — لوحة المؤشرات</span><span class="pm-badge2">+قائمة</span></div>
+            <div class="pm-row"><span>07 — خطة التطبيق</span><span class="pm-badge2">30 يومًا</span></div>
+          </div>
         </div>
         <div class="prev-title">تفصيل كامل لقيمة الأصول</div>
         <div class="prev-note">كل وحدة مدرجة مع قيمتها الأصلية وسعر الإطلاق.</div>
@@ -2255,7 +2366,7 @@
             </div>
             <div class="val-row val-total">
               <div class="val-total-name">إجمالي عرض الإطلاق</div>
-              <div class="val-total-norm">$827</div>
+              <div class="val-total-norm" style="font-size:10px;line-height:1.4;">قيمة الحزمة<br>أعلى من سعر الإطلاق</div>
               <div class="val-total-yours">$70</div>
             </div>
           </div>
