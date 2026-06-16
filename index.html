@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" style="color-scheme:dark;">
+<html lang="ar" dir="rtl" style="color-scheme:dark;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AUTOMATEX — The Ecommerce Operating System for Shopify store owners. Systems, SOPs, AI prompts, templates, automation workflows, and a 30-day roadmap to organize your backend before scaling traffic.">
-  <title>AUTOMATEX — The Ecommerce Operating System</title>
+  <meta name="description" content="AUTOMATEX — نظام التشغيل للتجارة الإلكترونية. إجراءات، قوالب، أوامر AI، سير عمل آلية، وخطة 30 يومًا لتنظيم عمليات متجرك قبل ضخ الزيارات.">
+  <title>AUTOMATEX — نظام التشغيل للتجارة الإلكترونية</title>
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type"        content="website">
-  <meta property="og:title"       content="AUTOMATEX — The Ecommerce Operating System">
-  <meta property="og:description" content="Stop running your ecommerce store with random tasks. AUTOMATEX gives you the systems, SOPs, AI prompts, templates, and 30-day roadmap to run your backend like an operator.">
+  <meta property="og:title"       content="AUTOMATEX — نظام التشغيل للتجارة الإلكترونية">
+  <meta property="og:description" content="توقف عن تشغيل متجرك بالتخمين. AUTOMATEX يعطيك الأنظمة والإجراءات وأوامر AI والقوالب وخطة 30 يومًا لإدارة متجرك كمحترف.">
   <meta property="og:image"       content="og-image.jpg">
   <meta property="og:url"         content="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="AUTOMATEX — The Ecommerce Operating System">
-  <meta name="twitter:description" content="Stop running your ecommerce store with random tasks. AUTOMATEX gives you the systems, SOPs, AI prompts, templates, and 30-day roadmap to run your backend like an operator.">
+  <meta name="twitter:title"       content="AUTOMATEX — نظام التشغيل للتجارة الإلكترونية">
+  <meta name="twitter:description" content="توقف عن تشغيل متجرك بالتخمين. AUTOMATEX يعطيك الأنظمة والإجراءات وأوامر AI والقوالب وخطة 30 يومًا لإدارة متجرك كمحترف.">
   <meta name="theme-color" content="#050505">
 
   <!-- Favicon (inline SVG — no extra file needed) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050505'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='18' font-weight='bold' fill='%23C9A84C'%3EA%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
 
   /* ============================================================
@@ -1355,23 +1355,149 @@
     .float-card { min-width:120px; }
   }
 
+
+  /* ============================================================
+     RTL & ARABIC OVERRIDES
+     ============================================================ */
+
+  /* Arabic fonts */
+  body { font-family:'Tajawal','Inter',sans-serif; }
+  h1,h2,h3,h4,
+  .hero-headline,.section-title,.final-title,.guar-title,.pricing-title,
+  .prob-title,.in-title,.rm-title,.sys-title,.sys-word,
+  .ben-title,.wb-title,.fc-lbl,.h-label,.eyebrow,
+  .nav-logo,.foot-logo,.real-col-label,.fit-head,
+  .btn,.nav-cta,.nav-link,.nml,
+  .prev-title,.prev-label,.in-badge,.price-lbl,.announce,
+  .sc-section-lbl,.sc-stat-l,.sc-bl,.rm-wk,.sc-logo {
+    font-family:'Cairo','Cinzel',sans-serif;
+  }
+
+  /* Remove letter-spacing that breaks Arabic rendering */
+  body,p,span,li,div { letter-spacing:0 !important; }
+  .eyebrow,.h-label,.section-eyebrow { letter-spacing:1px !important; }
+  .btn,.nav-cta { letter-spacing:0.3px !important; }
+  .nav-link,.nml { letter-spacing:0.5px !important; }
+  .sc-logo,.rm-wk,.sys-word { letter-spacing:1px !important; }
+  .in-badge,.price-save,.val-head span { letter-spacing:0.5px !important; }
+
+  /* Hero headline line height for Arabic */
+  .hero-headline { line-height:1.35; }
+
+  /* Flip left-gradient decorative lines */
+  .hero-divider {
+    background:linear-gradient(to left,var(--gold-d),var(--gold),transparent);
+  }
+  .g-rule {
+    background:linear-gradient(to left,var(--gold-d),var(--gold),transparent);
+  }
+  .h-label::before {
+    background:linear-gradient(to left,var(--gold-d),var(--gold));
+  }
+
+  /* FAQ button RTL */
+  .faq-q { text-align:right; }
+  .faq-i { margin-left:0; margin-right:20px; }
+
+  /* Ben card: flip left border accent to right */
+  .ben-card::before { left:auto; right:0; }
+
+  /* Prob card: top bar from right */
+  .prob-card::before { transform-origin:right; }
+
+  /* In-card: bottom bar origin */
+  .in-card::after { transform-origin:right; }
+
+  /* Real col label: flip flex order for RTL separator line */
+  .real-col-label { flex-direction:row-reverse; }
+  .real-col-label::after { display:none; }
+  .real-col-label::before {
+    content:''; flex:1; height:1px;
+    background:currentColor; opacity:.2;
+  }
+
+  /* Fit head: flip line */
+  .fit-head { flex-direction:row-reverse; }
+  .fit-head::after { display:none; }
+  .fit-head::before {
+    content:''; flex:1; height:1px;
+    background:currentColor; opacity:.2;
+  }
+
+  /* Skip link flip */
+  .skip-link { left:auto; right:16px; }
+
+  /* Price block alignment */
+  .price-lbl { text-align:right; }
+  .price-row { justify-content:flex-end; }
+  .price-note { text-align:right; }
+  .val-note { text-align:right; }
+  .price-main-row { justify-content:flex-end; flex-direction:row-reverse; }
+  .price-cur { margin-top:8px; font-weight:700; }
+
+  /* Value table RTL */
+  .val-table { direction:rtl; }
+  .val-row { direction:rtl; }
+  .val-head { direction:rtl; }
+
+  /* Estimated values footnote align */
+  p[style*="text-align:left"] { text-align:right !important; }
+
+  /* Buy microcopy center */
+  .buy-micro { direction:ltr; }
+
+  /* Nav mobile RTL */
+  .nav-mobile { text-align:right; }
+  .nml { text-align:right; }
+
+  /* Announce RTL */
+  .announce { direction:rtl; }
+
+  /* Hero CTA group align to right in RTL */
+  .hero-cta-group { align-items:flex-end; }
+  .hero-positioning { justify-content:flex-end; }
+
+  /* What-not list / what-is list alignment */
+  .what-not-list li,.what-is-list li { text-align:right; }
+
+  /* Real list alignment */
+  .real-list li { text-align:right; }
+
+  /* Fit list alignment */
+  .fit-list li { text-align:right; }
+
+  /* Guarantee text */
+  .guar-text { text-align:center; }
+
+  /* SC bars: keep labels and numbers readable */
+  .sc-bar-row { direction:rtl; }
+  .sc-bp { direction:ltr; text-align:left; }
+
+  /* Roadmap week badge text */
+  .rm-wk,.rm-n { direction:ltr; }
+
+  /* Showcase section on mobile */
+  @media(max-width:960px){
+    .sc-col-center { order:0; }
+  }
+
   </style>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to content</a>
+<a class="skip-link" href="#main-content">انتقل إلى المحتوى</a>
 <main id="main-content">
 
 <!-- =====================================================
      ANNOUNCEMENT BAR
      ===================================================== -->
 <div class="announce">
-  <span>AUTOMATEX is currently available at the launch price</span>
+  <span>AUTOMATEX متاح الآن بسعر الإطلاق</span>
   <span class="sep">·</span>
-  <span class="hl">$70 today</span>
+  <span class="hl">70$ فقط</span>
   <span class="sep">·</span>
-  <span>One-time payment · Instant access</span>
+  <span>دفعة واحدة · وصول فوري</span>
   <span class="sep">·</span>
-  <a class="announce-link" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">Get Access →</a>
+  <a class="announce-link" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">اشتري الآن ←</a>
 </div>
 
 <!-- =====================================================
@@ -1380,24 +1506,24 @@
 <nav>
   <a class="nav-logo" href="#">AUTOMATEX</a>
   <div class="nav-links">
-    <a class="nav-link" href="#home">Home</a>
-    <a class="nav-link" href="#inside">Inside</a>
-    <a class="nav-link" href="#systems">Systems</a>
-    <a class="nav-link" href="#roadmap">Roadmap</a>
-    <a class="nav-link" href="#pricing">Pricing</a>
-    <a class="nav-link" href="#faq">FAQ</a>
+    <a class="nav-link" href="#home">الرئيسية</a>
+    <a class="nav-link" href="#inside">المحتوى</a>
+    <a class="nav-link" href="#systems">الأنظمة</a>
+    <a class="nav-link" href="#roadmap">الخطة</a>
+    <a class="nav-link" href="#pricing">السعر</a>
+    <a class="nav-link" href="#faq">الأسئلة</a>
   </div>
-  <a class="nav-cta" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">Get Access</a>
-  <button class="nav-burger" id="navBurger" aria-label="Open navigation">
+  <a class="nav-cta" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">اشتري الآن</a>
+  <button class="nav-burger" id="navBurger" aria-label="فتح القائمة">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
   </button>
   <div class="nav-mobile" id="navMenu">
-    <a class="nml" href="#home">Home</a>
-    <a class="nml" href="#inside">Inside</a>
-    <a class="nml" href="#systems">Systems</a>
-    <a class="nml" href="#roadmap">Roadmap</a>
-    <a class="nml" href="#pricing">Pricing</a>
-    <a class="nml" href="#faq">FAQ</a>
+    <a class="nml" href="#home">الرئيسية</a>
+    <a class="nml" href="#inside">المحتوى</a>
+    <a class="nml" href="#systems">الأنظمة</a>
+    <a class="nml" href="#roadmap">الخطة</a>
+    <a class="nml" href="#pricing">السعر</a>
+    <a class="nml" href="#faq">الأسئلة</a>
   </div>
 </nav>
 
@@ -1412,32 +1538,32 @@
   <div class="hero-smoke-2"></div>
   <div class="hero-smoke-3"></div>
 
-  <!-- LEFT: COPY -->
+  <!-- RIGHT (RTL): COPY -->
   <div class="hero-text">
-    <span class="h-label">The Ecommerce Operating System</span>
+    <span class="h-label">نظام التشغيل للتجارة الإلكترونية</span>
 
     <h1 class="hero-headline">
-      Your store runs<br>on memory.<br>
-      <span class="accent">Systems change that.</span>
+      متجرك يعمل<br>بالذاكرة.<br>
+      <span class="accent">الأنظمة تغيّر ذلك.</span>
     </h1>
 
     <div class="hero-divider"></div>
 
     <p class="hero-sub">
-      AUTOMATEX gives Shopify operators the <strong>SOPs, templates, AI prompts, automation workflows, and a 30-day roadmap</strong> to run daily operations with structure instead of guesswork.
+      AUTOMATEX يمنح أصحاب متاجر Shopify <strong>إجراءات تشغيل جاهزة، قوالب، أوامر AI، سير عمل آلية، وخطة 30 يومًا</strong> — لإدارة العمليات بنظام واضح بدلًا من التخمين.
     </p>
 
     <div class="hero-cta-group">
       <a class="btn btn-lg" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">
-        Get Instant Access — $70
+        اشتري الآن — 70$
       </a>
-      <p class="btn-sub">Fix the backend before you scale traffic.</p>
+      <p class="btn-sub">رتّب الخلفية قبل أن تضخ الزيارات.</p>
     </div>
 
     <div class="hero-positioning">
-      <div class="h-pos-item">Instant digital delivery</div>
-      <div class="h-pos-item">One-time payment</div>
-      <div class="h-pos-item">Built for Shopify operators</div>
+      <div class="h-pos-item">تسليم رقمي فوري</div>
+      <div class="h-pos-item">دفعة واحدة</div>
+      <div class="h-pos-item">مصمم لأصحاب متاجر Shopify</div>
     </div>
   </div>
 
@@ -1461,35 +1587,35 @@
             </div>
 
             <div>
-              <div class="sc-section-lbl">Operations Dashboard</div>
+              <div class="sc-section-lbl">لوحة العمليات</div>
               <div class="sc-stats">
-                <div class="sc-stat"><span class="sc-stat-n">07</span><span class="sc-stat-l">Systems</span></div>
-                <div class="sc-stat"><span class="sc-stat-n">50+</span><span class="sc-stat-l">Prompts</span></div>
-                <div class="sc-stat"><span class="sc-stat-n">30</span><span class="sc-stat-l">Day Plan</span></div>
-                <div class="sc-stat"><span class="sc-stat-n">100+</span><span class="sc-stat-l">Templates</span></div>
+                <div class="sc-stat"><span class="sc-stat-n">07</span><span class="sc-stat-l">أنظمة</span></div>
+                <div class="sc-stat"><span class="sc-stat-n">50+</span><span class="sc-stat-l">أمر</span></div>
+                <div class="sc-stat"><span class="sc-stat-n">30</span><span class="sc-stat-l">يومًا</span></div>
+                <div class="sc-stat"><span class="sc-stat-n">100+</span><span class="sc-stat-l">قالب</span></div>
               </div>
             </div>
 
             <div>
-              <div class="sc-section-lbl">System Status</div>
+              <div class="sc-section-lbl">حالة النظام</div>
               <div class="sc-bars">
                 <div class="sc-bar-row">
-                  <span class="sc-bl">Operations</span>
+                  <span class="sc-bl">العمليات</span>
                   <div class="sc-track"><div class="sc-fill" style="width:88%"></div></div>
                   <span class="sc-bp">88%</span>
                 </div>
                 <div class="sc-bar-row">
-                  <span class="sc-bl">Marketing</span>
+                  <span class="sc-bl">التسويق</span>
                   <div class="sc-track"><div class="sc-fill" style="width:74%"></div></div>
                   <span class="sc-bp">74%</span>
                 </div>
                 <div class="sc-bar-row">
-                  <span class="sc-bl">Fulfillment</span>
+                  <span class="sc-bl">الشحن</span>
                   <div class="sc-track"><div class="sc-fill" style="width:92%"></div></div>
                   <span class="sc-bp">92%</span>
                 </div>
                 <div class="sc-bar-row">
-                  <span class="sc-bl">Support</span>
+                  <span class="sc-bl">الدعم</span>
                   <div class="sc-track"><div class="sc-fill" style="width:80%"></div></div>
                   <span class="sc-bp">80%</span>
                 </div>
@@ -1497,11 +1623,11 @@
             </div>
 
             <div>
-              <div class="sc-section-lbl">Active Workflows</div>
+              <div class="sc-section-lbl">سير العمل النشطة</div>
               <div class="sc-wfs">
-                <div class="sc-wf"><div class="sc-wdot"></div> Abandoned Cart Recovery</div>
-                <div class="sc-wf"><div class="sc-wdot"></div> Customer Service SOP</div>
-                <div class="sc-wf"><div class="sc-wdot"></div> Fulfillment Checklist</div>
+                <div class="sc-wf"><div class="sc-wdot"></div> استرداد السلات المتروكة</div>
+                <div class="sc-wf"><div class="sc-wdot"></div> إجراء خدمة العملاء</div>
+                <div class="sc-wf"><div class="sc-wdot"></div> قائمة تحقق الشحن</div>
               </div>
             </div>
 
@@ -1519,11 +1645,11 @@
      TRUST BAR
      ===================================================== -->
 <div class="trust-bar">
-  <div class="tb-item"><span class="tb-ico">⚡</span><span><strong>Instant</strong> digital delivery</span></div>
-  <div class="tb-item"><span class="tb-ico">🔒</span><span><strong>Secure</strong> checkout via Gumroad</span></div>
-  <div class="tb-item"><span class="tb-ico">📦</span><span>Built for <strong>Shopify</strong> operators</span></div>
-  <div class="tb-item"><span class="tb-ico">🗓️</span><span><strong>30-Day</strong> implementation roadmap included</span></div>
-  <div class="tb-item"><span class="tb-ico">💳</span><span><strong>One-time</strong> payment — no subscription</span></div>
+  <div class="tb-item"><span class="tb-ico">⚡</span><span>تسليم <strong>فوري</strong> رقمي</span></div>
+  <div class="tb-item"><span class="tb-ico">🔒</span><span>دفع <strong>آمن</strong> عبر Gumroad</span></div>
+  <div class="tb-item"><span class="tb-ico">📦</span><span>مصمم لأصحاب متاجر <strong>Shopify</strong></span></div>
+  <div class="tb-item"><span class="tb-ico">🗓️</span><span>خطة تطبيق <strong>30 يومًا</strong> شاملة</span></div>
+  <div class="tb-item"><span class="tb-ico">💳</span><span>دفعة <strong>واحدة</strong> — بدون اشتراك شهري</span></div>
 </div>
 
 <!-- =====================================================
@@ -1531,40 +1657,40 @@
      ===================================================== -->
 <section class="section problem-bg" id="home-problems">
   <div class="section-inner">
-    <span class="eyebrow reveal">The Real Problem</span>
-    <h2 class="section-title reveal">More traffic won't fix a backend<br>built on <span class="accent">memory and scattered tools.</span></h2>
-    <p class="section-sub reveal">Most ecommerce stores run on scattered tools and last-minute decisions. At a certain point, that stops being manageable.</p>
+    <span class="eyebrow reveal">المشكلة الحقيقية</span>
+    <h2 class="section-title reveal">الزيارات الأكثر لن تصلح خلفية<br>تعمل على <span class="accent">الذاكرة والأدوات المتشتتة.</span></h2>
+    <p class="section-sub reveal">معظم المتاجر تعمل على قرارات لحظية وأدوات غير منظمة. عند نقطة معينة، هذا لا يمكن إدارته بعد الآن.</p>
 
     <div class="prob-grid">
       <div class="prob-card reveal d1">
         <span class="prob-ico">🛒</span>
-        <div class="prob-title">Abandoned Carts Nobody Follows Up On</div>
-        <div class="prob-body">Potential customers leave your store and nothing triggers. No email sequence. No reminder. No system. Just lost revenue sitting in your dashboard.</div>
+        <div class="prob-title">سلات متروكة لا أحد يتابعها</div>
+        <div class="prob-body">عملاء محتملون يغادرون متجرك دون أن يُطلق أي شيء. لا سلسلة إيميل، لا تذكير، لا نظام. فقط إيرادات ضائعة تجلس في لوحة تحكمك.</div>
       </div>
       <div class="prob-card reveal d2">
         <span class="prob-ico">📧</span>
-        <div class="prob-title">Random Emails With No Logic</div>
-        <div class="prob-body">Your email list exists but there is no structured workflow. Campaigns go out when you remember. Nothing is automated. Everything depends on your energy that day.</div>
+        <div class="prob-title">إيميلات عشوائية بلا منطق</div>
+        <div class="prob-body">قائمتك البريدية موجودة لكن لا يوجد سير عمل منظم. الحملات تُرسل عندما تتذكر. لا شيء آلي. كل شيء يعتمد على طاقتك في ذلك اليوم.</div>
       </div>
       <div class="prob-card reveal d3">
         <span class="prob-ico">🌀</span>
-        <div class="prob-title">Customer Support Is Chaos</div>
-        <div class="prob-body">Every support request is handled differently. No template replies. No escalation process. No SOP. You write every response from scratch and it takes hours every week.</div>
+        <div class="prob-title">خدمة العملاء فوضى</div>
+        <div class="prob-body">كل طلب دعم يُعالَج بطريقة مختلفة. لا ردود جاهزة، لا عملية تصعيد، لا إجراء موثق. تكتب كل رد من الصفر وتأخذ ساعات كل أسبوع.</div>
       </div>
       <div class="prob-card reveal d4">
         <span class="prob-ico">🧠</span>
-        <div class="prob-title">Everything Runs on Memory</div>
-        <div class="prob-body">There is no written process for anything. You keep it all in your head. When you step away, things break. Delegation feels impossible because nothing is documented.</div>
+        <div class="prob-title">كل شيء يعمل بالذاكرة</div>
+        <div class="prob-body">لا يوجد إجراء موثق لأي شيء. تحتفظ بكل شيء في ذهنك. عندما تغيب، الأمور تتعطل. التفويض مستحيل لأن لا شيء مكتوب.</div>
       </div>
       <div class="prob-card reveal d5">
         <span class="prob-ico">📉</span>
-        <div class="prob-title">Inconsistent Fulfillment and Operations</div>
-        <div class="prob-body">Fulfillment depends on whoever is available that day. There is no checklist, no process, no standard. Orders go out differently every time and mistakes keep repeating.</div>
+        <div class="prob-title">عمليات غير منتظمة</div>
+        <div class="prob-body">الشحن يعتمد على من هو متاح في ذلك اليوم. لا قائمة تحقق، لا معيار. الطلبات تُنجز بشكل مختلف في كل مرة والأخطاء تتكرر.</div>
       </div>
       <div class="prob-card reveal d6">
         <span class="prob-ico">⚠️</span>
-        <div class="prob-title">Scaling Traffic Makes It Worse</div>
-        <div class="prob-body">You think more traffic will fix the revenue problem. But when more customers hit a disorganized backend, you get more chaos. Systems need to exist before you scale.</div>
+        <div class="prob-title">الزيارات الأكثر تزيد المشكلة سوءًا</div>
+        <div class="prob-body">تعتقد أن مزيدًا من الزيارات سيحل مشكلة الإيرادات. لكن عندما يصطدم المزيد من العملاء بخلفية غير منظمة، تحصل على مزيد من الفوضى.</div>
       </div>
     </div>
   </div>
@@ -1575,21 +1701,21 @@
      ===================================================== -->
 <section class="showcase-section">
   <div class="section-inner">
-    <span class="eyebrow reveal">The Complete System</span>
-    <h2 class="section-title reveal">Seven modules.<br>One <span class="accent">operating system</span> for your Shopify backend.</h2>
-    <p class="section-sub reveal">Seven modules, 50+ prompts, and a 30-day roadmap — built around how ecommerce stores actually run.</p>
+    <span class="eyebrow reveal">النظام الكامل</span>
+    <h2 class="section-title reveal">سبع وحدات.<br>نظام تشغيل واحد <span class="accent">لخلفية Shopify الخاصة بك.</span></h2>
+    <p class="section-sub reveal">سبع وحدات، 50+ أمر، وخطة 30 يومًا — مبنية حول كيفية عمل متاجر التجارة الإلكترونية فعليًا.</p>
 
     <div class="showcase-layout reveal">
       <div class="sc-col">
         <div class="float-card">
           <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div>
-          <div class="fc-lbl">SOPs</div>
-          <div class="fc-sub">Pre-written procedures for every key store operation</div>
+          <div class="fc-lbl">إجراءات التشغيل</div>
+          <div class="fc-sub">إجراءات جاهزة لكل عملية رئيسية في المتجر</div>
         </div>
         <div class="float-card">
           <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
-          <div class="fc-lbl">Automation Workflows</div>
-          <div class="fc-sub">Visual blueprints that run cart recovery and fulfillment ops</div>
+          <div class="fc-lbl">سير عمل آلية</div>
+          <div class="fc-sub">خرائط مرئية لاسترداد السلات وعمليات الشحن</div>
         </div>
       </div>
 
@@ -1604,20 +1730,20 @@
                   <div class="sc-status"><div class="sc-dot"></div><span>ACTIVE</span></div>
                 </div>
                 <div>
-                  <div class="sc-section-lbl">Operations Dashboard</div>
+                  <div class="sc-section-lbl">لوحة العمليات</div>
                   <div class="sc-stats">
-                    <div class="sc-stat"><span class="sc-stat-n">07</span><span class="sc-stat-l">Systems</span></div>
-                    <div class="sc-stat"><span class="sc-stat-n">50+</span><span class="sc-stat-l">Prompts</span></div>
-                    <div class="sc-stat"><span class="sc-stat-n">30</span><span class="sc-stat-l">Day Plan</span></div>
-                    <div class="sc-stat"><span class="sc-stat-n">100+</span><span class="sc-stat-l">Assets</span></div>
+                    <div class="sc-stat"><span class="sc-stat-n">07</span><span class="sc-stat-l">أنظمة</span></div>
+                    <div class="sc-stat"><span class="sc-stat-n">50+</span><span class="sc-stat-l">أمر</span></div>
+                    <div class="sc-stat"><span class="sc-stat-n">30</span><span class="sc-stat-l">يومًا</span></div>
+                    <div class="sc-stat"><span class="sc-stat-n">100+</span><span class="sc-stat-l">أصل</span></div>
                   </div>
                 </div>
                 <div>
-                  <div class="sc-section-lbl">System Status</div>
+                  <div class="sc-section-lbl">حالة النظام</div>
                   <div class="sc-bars">
-                    <div class="sc-bar-row"><span class="sc-bl">Operations</span><div class="sc-track"><div class="sc-fill" style="width:88%"></div></div><span class="sc-bp">88%</span></div>
-                    <div class="sc-bar-row"><span class="sc-bl">Marketing</span><div class="sc-track"><div class="sc-fill" style="width:74%"></div></div><span class="sc-bp">74%</span></div>
-                    <div class="sc-bar-row"><span class="sc-bl">Fulfillment</span><div class="sc-track"><div class="sc-fill" style="width:92%"></div></div><span class="sc-bp">92%</span></div>
+                    <div class="sc-bar-row"><span class="sc-bl">العمليات</span><div class="sc-track"><div class="sc-fill" style="width:88%"></div></div><span class="sc-bp">88%</span></div>
+                    <div class="sc-bar-row"><span class="sc-bl">التسويق</span><div class="sc-track"><div class="sc-fill" style="width:74%"></div></div><span class="sc-bp">74%</span></div>
+                    <div class="sc-bar-row"><span class="sc-bl">الشحن</span><div class="sc-track"><div class="sc-fill" style="width:92%"></div></div><span class="sc-bp">92%</span></div>
                   </div>
                 </div>
               </div>
@@ -1628,13 +1754,13 @@
         <div class="sc-bottom">
           <div class="float-card">
             <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
-            <div class="fc-lbl">Shopify Templates</div>
-            <div class="fc-sub">Ready-to-use for product, order, and support ops</div>
+            <div class="fc-lbl">قوالب Shopify</div>
+            <div class="fc-sub">جاهزة للمنتجات والطلبات وعمليات الدعم</div>
           </div>
           <div class="float-card">
             <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-            <div class="fc-lbl">Tracking Sheets</div>
-            <div class="fc-sub">KPIs and weekly operations at a glance</div>
+            <div class="fc-lbl">جداول التتبع</div>
+            <div class="fc-sub">مؤشرات الأداء والعمليات الأسبوعية بلمحة</div>
           </div>
         </div>
       </div>
@@ -1642,13 +1768,13 @@
       <div class="sc-col">
         <div class="float-card">
           <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 15h.01M16 15h.01"/></svg></div>
-          <div class="fc-lbl">AI Prompts</div>
-          <div class="fc-sub">50+ prompts for product pages, support, marketing, and ops</div>
+          <div class="fc-lbl">أوامر AI</div>
+          <div class="fc-sub">50+ أمر للمنتجات والدعم والتسويق والعمليات</div>
         </div>
         <div class="float-card">
           <div class="fc-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg></div>
-          <div class="fc-lbl">30-Day Roadmap</div>
-          <div class="fc-sub">Day-by-day plan from setup to fully operational</div>
+          <div class="fc-lbl">خطة 30 يومًا</div>
+          <div class="fc-sub">خطة يوم بيوم من الإعداد حتى التشغيل الكامل</div>
         </div>
       </div>
     </div>
@@ -1660,34 +1786,34 @@
      ===================================================== -->
 <section class="systems-section" id="systems">
   <div class="section-inner">
-    <span class="eyebrow reveal">The Process</span>
-    <h2 class="section-title reveal">Three steps to a backend<br>that runs <span class="accent">without daily input.</span></h2>
-    <p class="section-sub reveal">Three phases. One path from scattered daily tasks to a store that runs on documented systems.</p>
+    <span class="eyebrow reveal">العملية</span>
+    <h2 class="section-title reveal">ثلاث خطوات لخلفية<br>تعمل <span class="accent">دون تدخل يومي.</span></h2>
+    <p class="section-sub reveal">ثلاث مراحل. مسار واحد من المهام المتشتتة إلى متجر يعمل بأنظمة موثقة.</p>
 
     <div class="sys-track">
       <div class="sys-step reveal d1">
         <div class="sys-circle">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m6.08 9.5-3.5 1.59a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83L18 9.5"/><path d="m6.08 14.5-3.5 1.59a1 1 0 0 0 0 1.83l8.58 3.9a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83L18 14.5"/></svg>
         </div>
-        <span class="sys-word">Organize</span>
-        <div class="sys-title">Turn scattered tasks into a clear structure</div>
-        <div class="sys-body">Map your current operations, identify what is missing, and install the AUTOMATEX framework across your store backend.</div>
+        <span class="sys-word">نظّم</span>
+        <div class="sys-title">حوّل المهام المتشتتة إلى هيكل واضح</div>
+        <div class="sys-body">رسّم خريطة عملياتك الحالية، حدد الفجوات، وثبّت إطار AUTOMATEX في خلفية متجرك.</div>
       </div>
       <div class="sys-step reveal d2">
         <div class="sys-circle">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
         </div>
-        <span class="sys-word">Automate</span>
-        <div class="sys-title">Build workflows that run without daily input</div>
-        <div class="sys-body">Deploy automation blueprints for cart recovery, fulfillment notifications, and follow-up sequences. Stop repeating the same manual work every week.</div>
+        <span class="sys-word">أتمت</span>
+        <div class="sys-title">ابنِ سير عمل تعمل دون تدخل يومي</div>
+        <div class="sys-body">نشّط أتمتة السلات المتروكة وإشعارات الشحن وسلاسل المتابعة. أوقف تكرار نفس العمل اليدوي كل أسبوع.</div>
       </div>
       <div class="sys-step reveal d3">
         <div class="sys-circle">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
-        <span class="sys-word">Optimize</span>
-        <div class="sys-title">Track what matters and improve with clarity</div>
-        <div class="sys-body">Use the KPI dashboard and weekly checklist to catch bottlenecks early and keep every part of your store running consistently.</div>
+        <span class="sys-word">حسّن</span>
+        <div class="sys-title">تتبع ما يهم وحسّن بوضوح</div>
+        <div class="sys-body">استخدم لوحة مؤشرات الأداء وقائمة التحقق الأسبوعية للكشف المبكر عن الاختناقات وإبقاء كل جزء من متجرك يعمل باتساق.</div>
       </div>
     </div>
   </div>
@@ -1698,34 +1824,34 @@
      ===================================================== -->
 <section class="section real-section">
   <div class="section-inner">
-    <span class="eyebrow reveal">The Realization</span>
-    <h2 class="section-title reveal">The Problem Is Not Traffic.<br>The Problem Is <span class="accent">Missing Systems.</span></h2>
-    <p class="section-sub reveal">The difference between a store that scales and one that stays stuck is almost never about ads. It is about what is behind the ads.</p>
+    <span class="eyebrow reveal">الحقيقة</span>
+    <h2 class="section-title reveal">المشكلة ليست الزيارات.<br>المشكلة <span class="accent">أنظمة مفقودة.</span></h2>
+    <p class="section-sub reveal">الفرق بين متجر يتوسع وآخر يبقى عالقًا نادرًا ما يكون عن الإعلانات. بل هو دائمًا عما يقف خلف تلك الإعلانات.</p>
 
     <div class="real-split reveal">
       <div class="real-col real-before">
-        <div class="real-col-label">Without Systems</div>
+        <div class="real-col-label">بدون أنظمة</div>
         <ul class="real-list">
-          <li><span class="r-ico">✗</span> Abandoned carts left with no follow-up workflow</li>
-          <li><span class="r-ico">✗</span> Customer support answered differently every time</li>
-          <li><span class="r-ico">✗</span> Fulfillment process depends on whoever is in the room</li>
-          <li><span class="r-ico">✗</span> No SOPs — everything lives in the owner's head</li>
-          <li><span class="r-ico">✗</span> Delegation is impossible because nothing is written</li>
-          <li><span class="r-ico">✗</span> More traffic creates more chaos, not more revenue</li>
-          <li><span class="r-ico">✗</span> Every week feels like starting over from scratch</li>
+          <li><span class="r-ico">✗</span> سلات متروكة بدون أي متابعة</li>
+          <li><span class="r-ico">✗</span> دعم العملاء يُعالج بطريقة مختلفة في كل مرة</li>
+          <li><span class="r-ico">✗</span> الشحن يعتمد على من هو متاح في ذلك اليوم</li>
+          <li><span class="r-ico">✗</span> لا إجراءات موثقة — كل شيء في ذهن المالك</li>
+          <li><span class="r-ico">✗</span> التفويض مستحيل لأن لا شيء مكتوب</li>
+          <li><span class="r-ico">✗</span> الزيارات الأكثر تعني فوضى أكثر، لا إيرادات أكثر</li>
+          <li><span class="r-ico">✗</span> كل أسبوع تشعر كأنك تبدأ من الصفر</li>
         </ul>
       </div>
       <div class="real-center-line"></div>
       <div class="real-col real-after">
-        <div class="real-col-label">With AUTOMATEX</div>
+        <div class="real-col-label">مع AUTOMATEX</div>
         <ul class="real-list">
-          <li><span class="r-ico">✓</span> Abandoned cart recovery workflow runs automatically</li>
-          <li><span class="r-ico">✓</span> Customer service SOPs give consistent, fast replies</li>
-          <li><span class="r-ico">✓</span> Fulfillment checklist ensures every order is handled right</li>
-          <li><span class="r-ico">✓</span> Everything is documented and ready to hand off</li>
-          <li><span class="r-ico">✓</span> Delegation becomes possible with written playbooks</li>
-          <li><span class="r-ico">✓</span> Backend is ready to absorb and convert more traffic</li>
-          <li><span class="r-ico">✓</span> Operations repeat consistently without your daily input</li>
+          <li><span class="r-ico">✓</span> سير عمل استرداد السلات يعمل تلقائيًا</li>
+          <li><span class="r-ico">✓</span> إجراءات خدمة العملاء تضمن ردودًا سريعة ومتسقة</li>
+          <li><span class="r-ico">✓</span> قائمة تحقق الشحن تضمن معالجة كل طلب بشكل صحيح</li>
+          <li><span class="r-ico">✓</span> كل شيء موثق وجاهز للتفويض فورًا</li>
+          <li><span class="r-ico">✓</span> التفويض أصبح ممكنًا مع دليل عمليات مكتوب</li>
+          <li><span class="r-ico">✓</span> الخلفية جاهزة لاستيعاب وتحويل المزيد من الزيارات</li>
+          <li><span class="r-ico">✓</span> العمليات تتكرر باتساق دون تدخلك اليومي</li>
         </ul>
       </div>
     </div>
@@ -1737,30 +1863,30 @@
      ===================================================== -->
 <section class="section what-section">
   <div class="section-inner">
-    <span class="eyebrow reveal">What AUTOMATEX Actually Is</span>
-    <h2 class="section-title reveal">Not a Course. Not a PDF.<br>A Complete <span class="accent">Ecommerce Operating System.</span></h2>
+    <span class="eyebrow reveal">ما هو AUTOMATEX فعليًا</span>
+    <h2 class="section-title reveal">ليس كورسًا. ليس PDF.<br>نظام تشغيل كامل <span class="accent">للتجارة الإلكترونية.</span></h2>
 
     <div class="what-grid">
       <div class="what-text-side reveal">
         <p style="font-size:15px;color:var(--text2);line-height:2;font-weight:300;margin-bottom:28px;">
-          Most digital products give you information. AUTOMATEX gives you infrastructure. Every system, template, and workflow is built specifically for ecommerce — not general business advice adapted for stores, but ecommerce-specific from the ground up.
+          معظم المنتجات الرقمية تعطيك معلومات. AUTOMATEX يعطيك بنية تحتية. كل نظام وقالب وسير عمل مصمم خصيصًا للتجارة الإلكترونية — من الجذور، لا نصائح عامة معدّلة للمتاجر.
         </p>
 
-        <p style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--text3);margin-bottom:16px;">What it is NOT:</p>
+        <p style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text3);margin-bottom:16px;">ليس هذا:</p>
         <ul class="what-not-list">
-          <li><span class="wn-ico">✗</span> Not a video course with lessons to watch</li>
-          <li><span class="wn-ico">✗</span> Not a generic PDF of business tips</li>
-          <li><span class="wn-ico">✗</span> Not recycled ecommerce advice you've already seen</li>
-          <li><span class="wn-ico">✗</span> Not a tool that requires technical setup</li>
+          <li><span class="wn-ico">✗</span> ليس كورس فيديو بدروس تشاهدها</li>
+          <li><span class="wn-ico">✗</span> ليس PDF بنصائح عامة للأعمال</li>
+          <li><span class="wn-ico">✗</span> ليس نصائح تجارة إلكترونية مكررة رأيتها من قبل</li>
+          <li><span class="wn-ico">✗</span> ليس أداة تحتاج إعدادًا تقنيًا</li>
         </ul>
 
-        <p style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px;margin-top:28px;">What it IS:</p>
+        <p style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold-d);margin-bottom:16px;margin-top:28px;">هذا هو:</p>
         <ul class="what-is-list">
-          <li><span class="wi-ico">◆</span> A complete operating system for your store backend</li>
-          <li><span class="wi-ico">◆</span> Ready-to-use SOPs, templates, and workflows</li>
-          <li><span class="wi-ico">◆</span> 50+ AI prompts built for ecommerce operations</li>
-          <li><span class="wi-ico">◆</span> A 30-day step-by-step implementation roadmap</li>
-          <li><span class="wi-ico">◆</span> Something you implement, not something you consume</li>
+          <li><span class="wi-ico">◆</span> نظام تشغيل كامل لخلفية متجرك</li>
+          <li><span class="wi-ico">◆</span> إجراءات وقوالب وسير عمل جاهزة للاستخدام</li>
+          <li><span class="wi-ico">◆</span> 50+ أمر AI مصمم لعمليات التجارة الإلكترونية</li>
+          <li><span class="wi-ico">◆</span> خطة تطبيق 30 يومًا خطوة بخطوة</li>
+          <li><span class="wi-ico">◆</span> تطبّقه، لا تستهلكه فقط</li>
         </ul>
       </div>
 
@@ -1770,40 +1896,40 @@
             <span class="wb-num">07</span>
             <span class="wb-icon">🏗️</span>
             <div class="wb-text">
-              <div class="wb-title">Ecommerce Operating Systems</div>
-              <div class="wb-sub">Complete backend infrastructure for your store</div>
+              <div class="wb-title">أنظمة تشغيل للتجارة الإلكترونية</div>
+              <div class="wb-sub">بنية تحتية كاملة لخلفية متجرك</div>
             </div>
           </div>
           <div class="w-badge">
             <span class="wb-num">04</span>
             <span class="wb-icon">📋</span>
             <div class="wb-text">
-              <div class="wb-title">Standard Operating Procedures</div>
-              <div class="wb-sub">Documented processes for every key operation</div>
+              <div class="wb-title">إجراءات تشغيل موثقة</div>
+              <div class="wb-sub">عمليات موثقة لكل مجال رئيسي في المتجر</div>
             </div>
           </div>
           <div class="w-badge">
             <span class="wb-num">50+</span>
             <span class="wb-icon">🤖</span>
             <div class="wb-text">
-              <div class="wb-title">AI Prompts for Ecommerce</div>
-              <div class="wb-sub">Built for Shopify operators, not generic business</div>
+              <div class="wb-title">أوامر AI للتجارة الإلكترونية</div>
+              <div class="wb-sub">مصممة لأصحاب Shopify، لا للأعمال العامة</div>
             </div>
           </div>
           <div class="w-badge">
             <span class="wb-num">10</span>
             <span class="wb-icon">📧</span>
             <div class="wb-text">
-              <div class="wb-title">Done-For-You Email Templates</div>
-              <div class="wb-sub">Abandon cart, follow-up, support, and more</div>
+              <div class="wb-title">قوالب إيميل جاهزة</div>
+              <div class="wb-sub">استرداد السلات، متابعة، دعم، وأكثر</div>
             </div>
           </div>
           <div class="w-badge">
             <span class="wb-num">30</span>
             <span class="wb-icon">🗺️</span>
             <div class="wb-text">
-              <div class="wb-title">Day Implementation Roadmap</div>
-              <div class="wb-sub">Exact daily plan from setup to fully operational</div>
+              <div class="wb-title">خطة تطبيق يوم بيوم</div>
+              <div class="wb-sub">خطة يومية دقيقة من الإعداد حتى التشغيل الكامل</div>
             </div>
           </div>
         </div>
@@ -1817,66 +1943,66 @@
      ===================================================== -->
 <section class="section inside-section" id="inside">
   <div class="section-inner">
-    <span class="eyebrow reveal">Inside AUTOMATEX</span>
-    <h2 class="section-title reveal">Every Module. Every Asset.<br><span class="accent">Ready to Implement.</span></h2>
-    <p class="section-sub reveal">Seven complete modules plus a full implementation roadmap. Each one is built around a specific operational problem that ecommerce store owners actually face.</p>
+    <span class="eyebrow reveal">داخل AUTOMATEX</span>
+    <h2 class="section-title reveal">كل وحدة. كل أصل.<br><span class="accent">جاهز للتطبيق.</span></h2>
+    <p class="section-sub reveal">سبع وحدات كاملة بالإضافة إلى خطة تطبيق شاملة. كل وحدة مبنية حول مشكلة تشغيلية محددة يواجهها أصحاب متاجر التجارة الإلكترونية.</p>
 
     <div class="inside-grid">
       <div class="in-card reveal d1">
         <div class="in-num">01</div>
         <span class="in-icon">🏗️</span>
-        <div class="in-title">Ecommerce Operation Systems</div>
-        <div class="in-body">Seven complete operating systems covering marketing, fulfillment, customer service, email, inventory, retention, and store management. No guesswork — just clear structure.</div>
-        <span class="in-badge">Core Infrastructure</span>
+        <div class="in-title">أنظمة تشغيل التجارة الإلكترونية</div>
+        <div class="in-body">سبعة أنظمة تشغيل كاملة تغطي التسويق والشحن وخدمة العملاء والإيميل والمخزون والاحتفاظ وإدارة المتجر. لا تخمين — فقط هيكل واضح.</div>
+        <span class="in-badge">البنية التحتية الأساسية</span>
       </div>
       <div class="in-card reveal d2">
         <div class="in-num">02</div>
         <span class="in-icon">📋</span>
-        <div class="in-title">Standard Operating Procedures</div>
-        <div class="in-body">Four detailed SOPs for the most important areas of your store. Pre-written, ready to hand off to a VA or team member from day one. No more knowledge held in your head.</div>
-        <span class="in-badge">Process Library</span>
+        <div class="in-title">إجراءات التشغيل الموثقة</div>
+        <div class="in-body">أربعة إجراءات تشغيل تفصيلية لأهم مجالات متجرك. مكتوبة مسبقًا وجاهزة للتسليم لمساعد أو عضو فريق من اليوم الأول. لا مزيد من المعرفة المحتجزة في رأسك.</div>
+        <span class="in-badge">مكتبة الإجراءات</span>
       </div>
       <div class="in-card reveal d3">
         <div class="in-num">03</div>
         <span class="in-icon">🤖</span>
-        <div class="in-title">50+ AI Prompts for Ecommerce</div>
-        <div class="in-body">AI prompts designed specifically for Shopify and ecommerce operators — product descriptions, customer service replies, ad copy, email sequences, and backend planning prompts.</div>
-        <span class="in-badge">AI-Powered</span>
+        <div class="in-title">50+ أمر AI للتجارة الإلكترونية</div>
+        <div class="in-body">أوامر AI مصممة خصيصًا لأصحاب Shopify — وصف المنتجات، ردود خدمة العملاء، نصوص الإعلانات، سلاسل الإيميل، وأوامر تخطيط العمليات.</div>
+        <span class="in-badge">مدعوم بالذكاء الاصطناعي</span>
       </div>
       <div class="in-card reveal d4">
         <div class="in-num">04</div>
         <span class="in-icon">📧</span>
-        <div class="in-title">Done-For-You Email Templates</div>
-        <div class="in-body">Ten pre-written email templates including abandoned cart recovery, post-purchase follow-up, reactivation, and customer support responses. Plug directly into your email platform.</div>
-        <span class="in-badge">10 Templates</span>
+        <div class="in-title">قوالب إيميل جاهزة</div>
+        <div class="in-body">عشرة قوالب إيميل مكتوبة مسبقًا تشمل استرداد السلات المتروكة، متابعة ما بعد الشراء، إعادة التفعيل، وردود دعم العملاء. تثبّتها مباشرة في منصة إيميلك.</div>
+        <span class="in-badge">10 قوالب</span>
       </div>
       <div class="in-card reveal d1">
         <div class="in-num">05</div>
         <span class="in-icon">⚡</span>
-        <div class="in-title">Automation Workflow Blueprints</div>
-        <div class="in-body">Visual workflow maps showing exactly how to automate your abandoned cart recovery, fulfillment notifications, review requests, and customer follow-up sequences.</div>
-        <span class="in-badge">Automation</span>
+        <div class="in-title">مخططات سير العمل الآلية</div>
+        <div class="in-body">خرائط سير عمل مرئية توضح بالضبط كيفية أتمتة استرداد السلات المتروكة وإشعارات الشحن وطلبات التقييم وسلاسل متابعة العملاء.</div>
+        <span class="in-badge">أتمتة</span>
       </div>
       <div class="in-card reveal d2">
         <div class="in-num">06</div>
         <span class="in-icon">📊</span>
-        <div class="in-title">KPI Dashboard + Weekly Checklist</div>
-        <div class="in-body">Track the metrics that actually matter for your store. Weekly operational checklist to review performance, catch issues early, and keep every department consistent.</div>
-        <span class="in-badge">Tracking System</span>
+        <div class="in-title">لوحة مؤشرات الأداء + قائمة التحقق الأسبوعية</div>
+        <div class="in-body">تتبع المقاييس التي تهم فعليًا لمتجرك. قائمة تحقق تشغيلية أسبوعية لمراجعة الأداء والكشف المبكر عن المشكلات وإبقاء كل قسم متسقًا.</div>
+        <span class="in-badge">نظام التتبع</span>
       </div>
       <div class="in-card reveal d3">
         <div class="in-num">07</div>
         <span class="in-icon">🗺️</span>
-        <div class="in-title">30-Day Implementation Roadmap</div>
-        <div class="in-body">A day-by-day plan for implementing every system inside AUTOMATEX. Know exactly what to do on day 1, day 7, day 15, and day 30. No confusion. No overwhelm.</div>
-        <span class="in-badge">Day-by-Day Plan</span>
+        <div class="in-title">خطة التطبيق 30 يومًا</div>
+        <div class="in-body">خطة يوم بيوم لتطبيق كل نظام داخل AUTOMATEX. اعرف بالضبط ماذا تفعل في اليوم الأول والسابع والخامس عشر والثلاثين. بدون تشتت. بدون إرباك.</div>
+        <span class="in-badge">خطة يوم بيوم</span>
       </div>
       <div class="in-card reveal d4">
         <div class="in-num">08</div>
         <span class="in-icon">✅</span>
-        <div class="in-title">Operations Checklists</div>
-        <div class="in-body">Daily, weekly, and monthly operation checklists covering every area of your store. Consistent execution without relying on memory. Delegate any checklist immediately.</div>
-        <span class="in-badge">Daily Execution</span>
+        <div class="in-title">قوائم التحقق التشغيلية</div>
+        <div class="in-body">قوائم تحقق يومية وأسبوعية وشهرية تغطي كل مجال من مجالات متجرك. تنفيذ متسق دون الاعتماد على الذاكرة. فوّض أي قائمة تحقق فورًا.</div>
+        <span class="in-badge">التنفيذ اليومي</span>
       </div>
     </div>
   </div>
@@ -1887,52 +2013,52 @@
      ===================================================== -->
 <section class="roadmap-section" id="roadmap">
   <div class="section-inner">
-    <span class="eyebrow reveal">30-Day Plan</span>
-    <h2 class="section-title reveal">Build the whole system<br><span class="accent">in 30 days.</span></h2>
-    <p class="section-sub reveal">The included roadmap breaks implementation into four focused weeks. Each week has a clear target so you set up the right thing at the right time.</p>
+    <span class="eyebrow reveal">الخطة 30 يومًا</span>
+    <h2 class="section-title reveal">ابنِ النظام كاملًا<br><span class="accent">في 30 يومًا.</span></h2>
+    <p class="section-sub reveal">خطة التطبيق المرفقة تقسّم العمل إلى أربعة أسابيع مركزة. كل أسبوع له هدف واضح لتعرف بالضبط ماذا تنجز ومتى.</p>
 
     <div class="rm-track">
       <div class="rm-step reveal d1">
-        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">01</span></div>
+        <div class="rm-badge"><span class="rm-wk">أسبوع</span><span class="rm-n">01</span></div>
         <div class="rm-card">
-          <div class="rm-title">Audit and Organize</div>
+          <div class="rm-title">التدقيق والتنظيم</div>
           <ul class="rm-list">
-            <li><span class="rm-dot"></span>Map current operations and identify gaps</li>
-            <li><span class="rm-dot"></span>Prioritize the highest-impact fixes</li>
-            <li><span class="rm-dot"></span>Install the AUTOMATEX structure</li>
+            <li><span class="rm-dot"></span>رسم خريطة العمليات الحالية وتحديد الفجوات</li>
+            <li><span class="rm-dot"></span>تحديد أولويات التحسينات عالية التأثير</li>
+            <li><span class="rm-dot"></span>تثبيت هيكل AUTOMATEX</li>
           </ul>
         </div>
       </div>
       <div class="rm-step reveal d2">
-        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">02</span></div>
+        <div class="rm-badge"><span class="rm-wk">أسبوع</span><span class="rm-n">02</span></div>
         <div class="rm-card">
-          <div class="rm-title">Install Systems and SOPs</div>
+          <div class="rm-title">تثبيت الأنظمة والإجراءات</div>
           <ul class="rm-list">
-            <li><span class="rm-dot"></span>Deploy SOPs for core store operations</li>
-            <li><span class="rm-dot"></span>Activate email and support templates</li>
-            <li><span class="rm-dot"></span>Set up fulfillment checklists</li>
+            <li><span class="rm-dot"></span>نشر الإجراءات لعمليات المتجر الأساسية</li>
+            <li><span class="rm-dot"></span>تفعيل قوالب الإيميل والدعم</li>
+            <li><span class="rm-dot"></span>إعداد قوائم تحقق الشحن</li>
           </ul>
         </div>
       </div>
       <div class="rm-step reveal d3">
-        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">03</span></div>
+        <div class="rm-badge"><span class="rm-wk">أسبوع</span><span class="rm-n">03</span></div>
         <div class="rm-card">
-          <div class="rm-title">Automate Workflows</div>
+          <div class="rm-title">أتمتة سير العمل</div>
           <ul class="rm-list">
-            <li><span class="rm-dot"></span>Build abandoned cart recovery</li>
-            <li><span class="rm-dot"></span>Set up post-purchase sequences</li>
-            <li><span class="rm-dot"></span>Reduce repetitive manual tasks across core operations</li>
+            <li><span class="rm-dot"></span>بناء استرداد السلات المتروكة</li>
+            <li><span class="rm-dot"></span>إعداد سلاسل ما بعد الشراء</li>
+            <li><span class="rm-dot"></span>تقليل المهام اليدوية المتكررة في العمليات الأساسية</li>
           </ul>
         </div>
       </div>
       <div class="rm-step reveal d4">
-        <div class="rm-badge"><span class="rm-wk">WEEK</span><span class="rm-n">04</span></div>
+        <div class="rm-badge"><span class="rm-wk">أسبوع</span><span class="rm-n">04</span></div>
         <div class="rm-card">
-          <div class="rm-title">Track and Optimize</div>
+          <div class="rm-title">التتبع والتحسين</div>
           <ul class="rm-list">
-            <li><span class="rm-dot"></span>Activate the KPI tracking dashboard</li>
-            <li><span class="rm-dot"></span>Run your first weekly ops checklist</li>
-            <li><span class="rm-dot"></span>Identify next optimization areas</li>
+            <li><span class="rm-dot"></span>تفعيل لوحة تتبع مؤشرات الأداء</li>
+            <li><span class="rm-dot"></span>تشغيل قائمة التحقق التشغيلية الأسبوعية الأولى</li>
+            <li><span class="rm-dot"></span>تحديد مجالات التحسين التالية</li>
           </ul>
         </div>
       </div>
@@ -1945,40 +2071,40 @@
      ===================================================== -->
 <section class="section" style="background:var(--bg);">
   <div class="section-inner">
-    <span class="eyebrow reveal">Why It Changes How You Operate</span>
-    <h2 class="section-title reveal">Real Benefits for the<br><span class="accent">Operators Who Implement</span></h2>
-    <p class="section-sub reveal">These are the operational changes that become possible when systems replace memory and structure replaces guesswork.</p>
+    <span class="eyebrow reveal">لماذا يغيّر طريقة عملك</span>
+    <h2 class="section-title reveal">فوائد حقيقية<br><span class="accent">لأصحاب المتاجر الذين يطبّقون</span></h2>
+    <p class="section-sub reveal">هذه هي التغييرات التشغيلية التي تصبح ممكنة عندما تحل الأنظمة محل الذاكرة ويحل الهيكل محل التخمين.</p>
 
     <div class="ben-grid">
       <div class="ben-card reveal d1">
         <div class="ben-ico">🎯</div>
-        <div class="ben-title">More Clarity Every Single Day</div>
-        <div class="ben-body">You know what needs to be done, in what order, and who is responsible. The daily noise is replaced by a clear operational framework.</div>
+        <div class="ben-title">وضوح أكبر كل يوم</div>
+        <div class="ben-body">تعرف ما يجب فعله وبأي ترتيب ومن المسؤول. الضجيج اليومي يُستبدل بإطار تشغيلي واضح يحكم كل قرار.</div>
       </div>
       <div class="ben-card reveal d2">
         <div class="ben-ico">🏗️</div>
-        <div class="ben-title">A Real Structure Behind Your Store</div>
-        <div class="ben-body">Your store stops running like a side project and starts operating like a real business with repeatable processes in every department.</div>
+        <div class="ben-title">هيكل حقيقي خلف متجرك</div>
+        <div class="ben-body">يتوقف متجرك عن العمل كمشروع جانبي ويبدأ في العمل كعمل تجاري حقيقي بعمليات قابلة للتكرار في كل قسم.</div>
       </div>
       <div class="ben-card reveal d3">
         <div class="ben-ico">⚡</div>
-        <div class="ben-title">Less Manual Work Every Week</div>
-        <div class="ben-body">Automation workflows and structured SOPs eliminate the repetitive decisions you currently make dozens of times per week.</div>
+        <div class="ben-title">عمل يدوي أقل كل أسبوع</div>
+        <div class="ben-body">سير العمل الآلية والإجراءات الموثقة تلغي القرارات المتكررة التي تتخذها عشرات المرات أسبوعيًا.</div>
       </div>
       <div class="ben-card reveal d4">
         <div class="ben-ico">🤝</div>
-        <div class="ben-title">Easier Delegation to Any Team Member</div>
-        <div class="ben-body">With every process documented and every workflow mapped, bringing on a VA or team member takes hours instead of weeks of knowledge transfer.</div>
+        <div class="ben-title">تفويض أسهل لأي عضو في الفريق</div>
+        <div class="ben-body">مع كل عملية موثقة وكل سير عمل مرسوم، إدماج مساعد أو عضو فريق يستغرق ساعات بدلًا من أسابيع من نقل المعرفة.</div>
       </div>
       <div class="ben-card reveal d5">
         <div class="ben-ico">🚀</div>
-        <div class="ben-title">Faster Execution on Everything</div>
-        <div class="ben-body">Templates, prompts, and checklists mean you stop starting from zero. Every task in your store has a starting point already prepared.</div>
+        <div class="ben-title">تنفيذ أسرع لكل شيء</div>
+        <div class="ben-body">القوالب والأوامر وقوائم التحقق تعني أنك تتوقف عن البدء من الصفر. كل مهمة في متجرك لها نقطة انطلاق جاهزة.</div>
       </div>
       <div class="ben-card reveal d6">
         <div class="ben-ico">📈</div>
-        <div class="ben-title">A Backend Ready to Scale</div>
-        <div class="ben-body">When your operations are organized, more traffic converts better. You stop losing revenue to backend chaos and start capturing what your ads are already generating.</div>
+        <div class="ben-title">خلفية جاهزة للتوسع</div>
+        <div class="ben-body">عندما تكون عملياتك منظمة، الزيارات الأكثر تتحول بشكل أفضل. تتوقف عن خسارة الإيرادات لفوضى الخلفية وتبدأ في التقاط ما تولّده إعلاناتك.</div>
       </div>
     </div>
   </div>
@@ -1989,32 +2115,32 @@
      ===================================================== -->
 <section class="section fit-section">
   <div class="section-inner">
-    <span class="eyebrow reveal">Who This Is Built For</span>
-    <h2 class="section-title reveal">AUTOMATEX Is for <span class="accent">Specific Operators</span></h2>
-    <p class="section-sub reveal">Not every digital product is for everyone. This is a serious operating system for people who are serious about building a structured store.</p>
+    <span class="eyebrow reveal">من بُني هذا له</span>
+    <h2 class="section-title reveal">AUTOMATEX لأصحاب <span class="accent">متاجر محددين</span></h2>
+    <p class="section-sub reveal">ليس كل منتج رقمي للجميع. هذا نظام تشغيل جاد لمن هو جاد في بناء متجر منظم.</p>
 
     <div class="fit-outer reveal">
       <div class="fit-col fit-yes">
-        <div class="fit-head">This Is For You</div>
+        <div class="fit-head">هذا لك إذا</div>
         <ul class="fit-list">
-          <li><span class="fi">✓</span> You own or manage a Shopify or ecommerce store</li>
-          <li><span class="fi">✓</span> You feel overwhelmed by daily operational tasks</li>
-          <li><span class="fi">✓</span> You want real systems, not just another motivational course</li>
-          <li><span class="fi">✓</span> You are a beginner who wants to build right from the start</li>
-          <li><span class="fi">✓</span> You manage a small ecommerce team and need clear processes</li>
-          <li><span class="fi">✓</span> You want to delegate but nothing is documented yet</li>
-          <li><span class="fi">✓</span> You are ready to do the implementation work required</li>
+          <li><span class="fi">✓</span> تمتلك أو تدير متجر Shopify أو تجارة إلكترونية</li>
+          <li><span class="fi">✓</span> تشعر بالإرهاق من المهام التشغيلية اليومية</li>
+          <li><span class="fi">✓</span> تريد أنظمة حقيقية، لا مجرد كورس تحفيزي آخر</li>
+          <li><span class="fi">✓</span> أنت مبتدئ يريد البناء الصحيح منذ البداية</li>
+          <li><span class="fi">✓</span> تدير فريقًا صغيرًا وتحتاج إجراءات واضحة</li>
+          <li><span class="fi">✓</span> تريد التفويض لكن لا شيء موثق بعد</li>
+          <li><span class="fi">✓</span> أنت مستعد للقيام بعمل التطبيق المطلوب</li>
         </ul>
       </div>
       <div class="fit-col fit-no">
-        <div class="fit-head">This Is Not For You</div>
+        <div class="fit-head">هذا ليس لك إذا</div>
         <ul class="fit-list">
-          <li><span class="fi">✗</span> You are looking for a shortcut to quick money</li>
-          <li><span class="fi">✗</span> You want results without implementing anything</li>
-          <li><span class="fi">✗</span> You already have every part of your backend fully systemized</li>
-          <li><span class="fi">✗</span> You have no ecommerce store to apply the systems to</li>
-          <li><span class="fi">✗</span> You want someone to run your store operations for you</li>
-          <li><span class="fi">✗</span> You are looking purely for paid traffic or ad strategies</li>
+          <li><span class="fi">✗</span> تبحث عن طريق سريع للثروة</li>
+          <li><span class="fi">✗</span> تريد نتائج دون تطبيق أي شيء</li>
+          <li><span class="fi">✗</span> خلفية متجرك منظمة بالكامل بالفعل</li>
+          <li><span class="fi">✗</span> لا يوجد لديك متجر لتطبيق الأنظمة فيه</li>
+          <li><span class="fi">✗</span> تريد شخصًا يدير عمليات متجرك بدلًا منك</li>
+          <li><span class="fi">✗</span> تبحث فقط عن استراتيجيات الإعلانات المدفوعة</li>
         </ul>
       </div>
     </div>
@@ -2026,42 +2152,42 @@
      ===================================================== -->
 <section class="section" style="background:var(--bg1);">
   <div class="section-inner">
-    <span class="eyebrow reveal">A Look Inside</span>
-    <h2 class="section-title reveal">What You Get Access To</h2>
-    <p class="section-sub reveal">Every asset is built specifically for ecommerce and ready to use on day one.</p>
+    <span class="eyebrow reveal">نظرة من الداخل</span>
+    <h2 class="section-title reveal">ما ستحصل عليه</h2>
+    <p class="section-sub reveal">كل أصل مصمم خصيصًا للتجارة الإلكترونية وجاهز للاستخدام في اليوم الأول.</p>
 
     <div class="prev-grid">
       <div class="prev-card reveal d1">
-        <span class="prev-label">Landing Page</span>
+        <span class="prev-label">صفحة الهبوط</span>
         <div class="prev-frame">
-          <img src="preview_1.png" alt="AUTOMATEX — CTA Section" loading="lazy">
+          <img src="preview_1.png" alt="AUTOMATEX — قسم CTA" loading="lazy">
         </div>
-        <div class="prev-title">Clear Purchase Experience</div>
-        <div class="prev-note">Secure checkout through Gumroad. Instant access after payment.</div>
+        <div class="prev-title">تجربة شراء واضحة</div>
+        <div class="prev-note">دفع آمن عبر Gumroad. وصول فوري بعد الدفع.</div>
       </div>
       <div class="prev-card reveal d2">
-        <span class="prev-label">Value Overview</span>
+        <span class="prev-label">نظرة عامة على القيمة</span>
         <div class="prev-frame">
-          <img src="preview_2.png" alt="AUTOMATEX — Offer Logic" loading="lazy">
+          <img src="preview_2.png" alt="AUTOMATEX — منطق العرض" loading="lazy">
         </div>
-        <div class="prev-title">Offer Logic &amp; Value Breakdown</div>
-        <div class="prev-note">Every asset explained with clear value rationale.</div>
+        <div class="prev-title">منطق العرض وتفصيل القيمة</div>
+        <div class="prev-note">كل أصل موضح مع مبرر القيمة الواضح.</div>
       </div>
       <div class="prev-card reveal d3">
-        <span class="prev-label">After Purchase</span>
+        <span class="prev-label">بعد الشراء</span>
         <div class="prev-frame">
-          <img src="preview_3.png" alt="AUTOMATEX — After Purchase" loading="lazy">
+          <img src="preview_3.png" alt="AUTOMATEX — بعد الشراء" loading="lazy">
         </div>
-        <div class="prev-title">Simple 3-Step Access Process</div>
-        <div class="prev-note">Pay → Access → Follow the roadmap. Nothing complicated.</div>
+        <div class="prev-title">عملية وصول بسيطة من 3 خطوات</div>
+        <div class="prev-note">ادفع ← صل ← اتبع الخطة. لا شيء معقد.</div>
       </div>
       <div class="prev-card reveal d4">
-        <span class="prev-label">Asset Table</span>
+        <span class="prev-label">جدول الأصول</span>
         <div class="prev-frame">
-          <img src="preview_4.png" alt="AUTOMATEX — Value Table" loading="lazy">
+          <img src="preview_4.png" alt="AUTOMATEX — جدول القيمة" loading="lazy">
         </div>
-        <div class="prev-title">Full Asset Value Breakdown</div>
-        <div class="prev-note">Every module listed with original value and your launch price.</div>
+        <div class="prev-title">تفصيل كامل لقيمة الأصول</div>
+        <div class="prev-note">كل وحدة مدرجة مع قيمتها الأصلية وسعر الإطلاق.</div>
       </div>
     </div>
   </div>
@@ -2072,93 +2198,93 @@
      ===================================================== -->
 <section class="section pricing-section" id="pricing">
   <div class="section-inner" style="text-align:center;">
-    <span class="eyebrow reveal">The Investment</span>
-    <h2 class="section-title reveal">The complete AUTOMATEX system.<br><span class="accent">Pay once.</span></h2>
-    <p class="section-sub reveal">No monthly fees. No subscription. One payment gets you the full system — SOPs, templates, workflows, AI prompts, and the 30-day roadmap.</p>
+    <span class="eyebrow reveal">الاستثمار</span>
+    <h2 class="section-title reveal">نظام AUTOMATEX الكامل.<br><span class="accent">دفعة واحدة.</span></h2>
+    <p class="section-sub reveal">بدون رسوم شهرية. بدون اشتراك. دفعة واحدة تمنحك النظام كاملًا — إجراءات وقوالب وسير عمل وأوامر AI وخطة 30 يومًا.</p>
 
     <div class="pricing-wrap reveal">
       <div class="pricing-glow"></div>
       <div class="pricing-card">
-        <div class="pricing-label">⚡ Launch Offer — Available Now at $70</div>
+        <div class="pricing-label">⚡ عرض الإطلاق — متاح الآن بسعر 70$</div>
         <div class="pricing-body">
-          <div class="pricing-title">AUTOMATEX — The Ecommerce Operating System</div>
+          <div class="pricing-title">AUTOMATEX — نظام التشغيل للتجارة الإلكترونية</div>
 
           <ul class="feat-list">
-            <li class="feat-item"><span class="f-ico">◆</span> 7 Ecommerce Operation Systems</li>
-            <li class="feat-item"><span class="f-ico">◆</span> 4 Standard Operating Procedures</li>
-            <li class="feat-item"><span class="f-ico">◆</span> 50+ AI Prompts for Ecommerce</li>
-            <li class="feat-item"><span class="f-ico">◆</span> 10 Done-For-You Email Templates</li>
-            <li class="feat-item"><span class="f-ico">◆</span> Automation Workflow Blueprints</li>
-            <li class="feat-item"><span class="f-ico">◆</span> KPI Dashboard + Weekly Operations Checklist</li>
-            <li class="feat-item"><span class="f-ico">◆</span> 30-Day Step-by-Step Implementation Roadmap</li>
-            <li class="feat-item"><span class="f-ico">◆</span> Operations Checklists (Daily, Weekly, Monthly)</li>
-            <li class="feat-item"><span class="f-ico">◆</span> Instant digital delivery via Gumroad</li>
+            <li class="feat-item"><span class="f-ico">◆</span> 7 أنظمة تشغيل للتجارة الإلكترونية</li>
+            <li class="feat-item"><span class="f-ico">◆</span> 4 إجراءات تشغيل موثقة</li>
+            <li class="feat-item"><span class="f-ico">◆</span> 50+ أمر AI للتجارة الإلكترونية</li>
+            <li class="feat-item"><span class="f-ico">◆</span> 10 قوالب إيميل جاهزة</li>
+            <li class="feat-item"><span class="f-ico">◆</span> مخططات سير العمل الآلية</li>
+            <li class="feat-item"><span class="f-ico">◆</span> لوحة مؤشرات الأداء + قائمة التحقق الأسبوعية</li>
+            <li class="feat-item"><span class="f-ico">◆</span> خطة التطبيق 30 يومًا خطوة بخطوة</li>
+            <li class="feat-item"><span class="f-ico">◆</span> قوائم التحقق التشغيلية (يومية، أسبوعية، شهرية)</li>
+            <li class="feat-item"><span class="f-ico">◆</span> تسليم رقمي فوري عبر Gumroad</li>
           </ul>
 
           <!-- Value Table -->
           <div class="val-table">
             <div class="val-row val-head">
-              <span>What's Included</span>
-              <span>Estimated Value</span>
-              <span>Your Price</span>
+              <span>ما يشمله النظام</span>
+              <span>القيمة التقديرية</span>
+              <span>سعرك</span>
             </div>
             <div class="val-row">
-              <div><div class="val-name">7 Ecommerce Operation Systems</div><div class="val-sub">Fulfillment, marketing, support, email, retention</div></div>
+              <div><div class="val-name">7 أنظمة تشغيل للتجارة الإلكترونية</div><div class="val-sub">الشحن، التسويق، الدعم، الإيميل، الاحتفاظ</div></div>
               <div class="val-norm">$300</div>
-              <div class="val-yours">Included</div>
+              <div class="val-yours">مشمول</div>
             </div>
             <div class="val-row">
-              <div><div class="val-name">10 Email Templates</div><div class="val-sub">Abandon cart, follow-up, support, reactivation</div></div>
+              <div><div class="val-name">10 قوالب إيميل</div><div class="val-sub">استرداد السلات، متابعة، دعم، إعادة تفعيل</div></div>
               <div class="val-norm">$149</div>
-              <div class="val-yours">Included</div>
+              <div class="val-yours">مشمول</div>
             </div>
             <div class="val-row">
-              <div><div class="val-name">4 Standard Operating Procedures</div><div class="val-sub">Ready to hand off to a VA or team member</div></div>
+              <div><div class="val-name">4 إجراءات تشغيل موثقة</div><div class="val-sub">جاهزة للتسليم لمساعد أو عضو فريق</div></div>
               <div class="val-norm">$250</div>
-              <div class="val-yours">Included</div>
+              <div class="val-yours">مشمول</div>
             </div>
             <div class="val-row">
-              <div><div class="val-name">50+ AI Prompts for Ecommerce</div><div class="val-sub">Product, support, email, and operations prompts</div></div>
+              <div><div class="val-name">50+ أمر AI للتجارة الإلكترونية</div><div class="val-sub">أوامر للمنتجات والدعم والإيميل والعمليات</div></div>
               <div class="val-norm">$79</div>
-              <div class="val-yours">Included</div>
+              <div class="val-yours">مشمول</div>
             </div>
             <div class="val-row">
-              <div><div class="val-name">KPI Dashboard + Weekly Checklist</div><div class="val-sub">Track and maintain consistent store operations</div></div>
+              <div><div class="val-name">لوحة المؤشرات + قائمة التحقق الأسبوعية</div><div class="val-sub">تتبع العمليات وضمان الاتساق في كل قسم</div></div>
               <div class="val-norm">$49</div>
-              <div class="val-yours">Included</div>
+              <div class="val-yours">مشمول</div>
             </div>
             <div class="val-row val-total">
-              <div class="val-total-name">Launch Offer Total</div>
+              <div class="val-total-name">إجمالي عرض الإطلاق</div>
               <div class="val-total-norm">$827</div>
               <div class="val-total-yours">$70</div>
             </div>
           </div>
-          <p style="font-size:11px;color:var(--text3);letter-spacing:0.3px;line-height:1.7;margin-top:10px;text-align:left;">Estimated values reflect comparable costs for equivalent templates, SOPs, dashboards, and ecommerce workflow assets.</p>
+          <p style="font-size:11px;color:var(--text3);line-height:1.7;margin-top:10px;text-align:right;">القيم التقديرية تعكس التكلفة المقارنة لقوالب ومواد مشابهة في السوق.</p>
 
           <div class="price-block" style="margin-top:36px;">
-            <span class="price-lbl">Your investment today</span>
+            <span class="price-lbl">استثمارك اليوم</span>
             <div class="price-row">
               <span class="price-was">$100</span>
-              <span class="price-save">SAVE 30%</span>
+              <span class="price-save">وفّر 30%</span>
             </div>
             <div class="price-main-row">
-              <span class="price-cur">$</span>
               <span class="price-main">70</span>
+              <span class="price-cur">$</span>
             </div>
-            <p class="price-note">One-time payment &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; No upsells</p>
+            <p class="price-note">دفعة واحدة &nbsp;·&nbsp; وصول فوري &nbsp;·&nbsp; بدون اشتراك &nbsp;·&nbsp; بدون إضافات مخفية</p>
           </div>
 
           <div class="val-note">
-            If AUTOMATEX helps you save 5 hours per week, that is <strong>260 hours per year</strong> returned to you. That is time you can spend building the business, not running it manually every day.
+            إذا ساعدك AUTOMATEX على توفير 5 ساعات أسبوعيًا، فهذا يعني <strong>260 ساعة سنويًا</strong> تُستردّ لك — وقت تقضيه في بناء المشروع، لا في إدارته يدويًا كل يوم.
           </div>
 
           <a class="btn btn-full" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">
-            Get Instant Access — $70
+            اشتري الآن — 70$
           </a>
           <div class="buy-micro">
-            <span>🔒 Secure checkout</span>
-            <span>⚡ Instant delivery</span>
-            <span>📦 Digital download</span>
+            <span>🔒 دفع آمن</span>
+            <span>⚡ تسليم فوري</span>
+            <span>📦 تحميل رقمي</span>
           </div>
         </div>
       </div>
@@ -2171,99 +2297,99 @@
      ===================================================== -->
 <section class="faq-section" id="faq">
   <div class="section-inner">
-    <span class="eyebrow reveal">Before You Buy</span>
-    <h2 class="section-title reveal">Questions before you get access</h2>
+    <span class="eyebrow reveal">قبل الشراء</span>
+    <h2 class="section-title reveal">أسئلة قبل الحصول على الوصول</h2>
     <div class="g-rule"></div>
 
     <div class="faq-list">
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">Who is AUTOMATEX for?</span>
+          <span class="faq-qt">من يستفيد من AUTOMATEX؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">It is for <strong>Shopify store owners, ecommerce operators, and digital business owners</strong> who want to organize their operations and stop running everything manually. If your store depends on your memory and your daily presence, AUTOMATEX gives you the structure to change that.</p>
+          <p class="faq-at">لأصحاب <strong>متاجر Shopify والتجارة الإلكترونية ومالكي الأعمال الرقمية</strong> الذين يريدون تنظيم عملياتهم والتوقف عن إدارة كل شيء يدويًا. إذا كان متجرك يعتمد على ذاكرتك وحضورك اليومي، AUTOMATEX يعطيك الهيكل لتغيير ذلك.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">Is this only for Shopify?</span>
+          <span class="faq-qt">هل هو لـ Shopify فقط؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">AUTOMATEX is built mainly for Shopify store owners, but <strong>many of the systems, SOPs, prompts, and workflows also apply to other ecommerce businesses</strong>. The operational problems it addresses — no documented processes, manual work, no delegation structure — exist across every platform.</p>
+          <p class="faq-at">AUTOMATEX مبني أساسًا لأصحاب متاجر Shopify، لكن <strong>كثيرًا من الأنظمة والإجراءات والأوامر وسير العمل تنطبق أيضًا على التجارة الإلكترونية على منصات أخرى</strong>. المشكلات التشغيلية التي يعالجها — غياب الإجراءات والعمل اليدوي وصعوبة التفويض — موجودة في كل المنصات.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">Do I need technical experience?</span>
+          <span class="faq-qt">هل أحتاج خبرة تقنية؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">No. The system is designed to be <strong>practical and easy to follow without technical knowledge</strong>. The SOPs are pre-written. The workflows are visual. The AI prompts work with any AI tool. You do not need to be a developer or automation expert to use AUTOMATEX from day one.</p>
+          <p class="faq-at">لا. النظام مصمم ليكون <strong>عمليًا وسهل الاتباع دون معرفة تقنية</strong>. الإجراءات مكتوبة مسبقًا. سير العمل مرئية. الأوامر تعمل مع أي أداة AI. لا تحتاج أن تكون مطورًا أو خبير أتمتة لاستخدام AUTOMATEX من اليوم الأول.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">What do I receive after purchase?</span>
+          <span class="faq-qt">ماذا أستلم بعد الشراء؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">You receive the <strong>complete AUTOMATEX digital operating system</strong> — 7 ecommerce operation systems, standard operating procedures, 50+ AI prompts, done-for-you email templates, automation workflow blueprints, a KPI dashboard, weekly checklists, and a 30-day implementation roadmap. Everything is delivered instantly through Gumroad.</p>
+          <p class="faq-at">تستلم <strong>نظام AUTOMATEX الرقمي الكامل</strong> — 7 أنظمة تشغيل للتجارة الإلكترونية، إجراءات تشغيل موثقة، 50+ أمر AI، قوالب إيميل جاهزة، مخططات سير عمل آلية، لوحة مؤشرات أداء، قوائم تحقق أسبوعية، وخطة تطبيق 30 يومًا. يُسلَّم كل شيء فورًا عبر Gumroad.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">Is this a course or a system?</span>
+          <span class="faq-qt">هل هذا كورس أم نظام؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">It is not a traditional course. <strong>There are no videos, no lessons, and no modules to sit through.</strong> AUTOMATEX is a practical operating system — templates, SOPs, workflows, prompts, and an implementation roadmap that you open, apply, and run inside your store. You implement it, not consume it.</p>
+          <p class="faq-at">ليس كورسًا تقليديًا. <strong>لا يوجد فيديوهات ولا دروس لتجلس وتتابعها.</strong> AUTOMATEX نظام تشغيلي عملي — قوالب وإجراءات وسير عمل وأوامر وخطة تطبيق تفتحها وتطبّقها مباشرة في متجرك. تطبّقه، لا تستهلكه.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">How do I access the product?</span>
+          <span class="faq-qt">كيف أصل إلى المنتج؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">After purchase, you receive <strong>instant digital access through Gumroad</strong>. No waiting, no shipping, no approval. You can open and begin using the system on the same day you buy.</p>
+          <p class="faq-at">بعد الشراء تحصل على <strong>وصول رقمي فوري عبر Gumroad</strong>. لا انتظار، لا شحن، لا موافقة. يمكنك فتح النظام وبدء الاستخدام في نفس يوم الشراء.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">I am just starting my store. Is AUTOMATEX still useful?</span>
+          <span class="faq-qt">أنا بدأت للتو، هل AUTOMATEX مفيد لي؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">Yes. Building your operations correctly from the start is <strong>far easier than fixing a mess later</strong>. The 30-day roadmap gives you a clear sequence to follow. Most store owners wish they had a system like this before they started scaling.</p>
+          <p class="faq-at">نعم. بناء عملياتك بشكل صحيح من البداية <strong>أسهل بكثير من إصلاح الفوضى لاحقًا</strong>. خطة الـ 30 يومًا تعطيك تسلسلًا واضحًا للاتباع. معظم أصحاب المتاجر يتمنون لو كان لديهم نظام كهذا قبل أن يبدأوا التوسع.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">Is AUTOMATEX for solo operators or teams?</span>
+          <span class="faq-qt">للعمل الفردي أم للفرق؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">Both. Solo operators benefit most from having everything documented so they can <strong>delegate when ready</strong>. Small teams benefit from consistent processes everyone follows. AUTOMATEX is not built for agencies managing multiple client stores.</p>
+          <p class="faq-at">لكليهما. أصحاب العمل الفردي يستفيدون من توثيق كل شيء ليكونوا مستعدين <strong>للتفويض عند الحاجة</strong>. الفرق الصغيرة تستفيد من الإجراءات المتسقة التي يتبعها الجميع. AUTOMATEX ليس مصممًا للوكالات التي تدير متاجر متعددة لعملاء.</p>
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          <span class="faq-qt">What is the refund policy?</span>
+          <span class="faq-qt">ما سياسة الاسترداد؟</span>
           <span class="faq-i">+</span>
         </button>
         <div class="faq-a">
-          <p class="faq-at">As this is a digital product delivered instantly, all sales are final. Please review the full asset list carefully before purchasing to make sure AUTOMATEX is the right fit for where your store is today.</p>
+          <p class="faq-at">بما أن هذا منتج رقمي يُسلَّم فورًا، جميع المبيعات نهائية. يُرجى مراجعة قائمة الأصول الكاملة بعناية قبل الشراء للتأكد من أن AUTOMATEX مناسب لمرحلة متجرك الحالية.</p>
         </div>
       </div>
 
@@ -2277,11 +2403,11 @@
 <div class="guar-section reveal">
   <div class="guar-ring">
     <span class="guar-ring-ico">🛡️</span>
-    <span class="guar-ring-lbl">Quality</span>
+    <span class="guar-ring-lbl">الجودة</span>
   </div>
-  <h2 class="guar-title">Built for Operators Who Implement</h2>
+  <h2 class="guar-title">مبني لأصحاب المتاجر الجادين في التطبيق</h2>
   <p class="guar-text">
-    AUTOMATEX is a serious product built for serious operators. Every system, SOP, template, and prompt inside has been designed specifically for ecommerce. This is infrastructure, not information. If you implement what is inside, you will have more structure in your operations than you do today.
+    AUTOMATEX منتج جاد لأصحاب عمل جادين. كل نظام وإجراء وقالب وأمر بداخله مصمم خصيصًا للتجارة الإلكترونية. هذه بنية تحتية، ليست معلومات. إذا طبّقت ما بداخله، ستمتلك هيكلًا تشغيليًا أقوى مما لديك اليوم.
   </p>
 </div>
 
@@ -2290,18 +2416,18 @@
      ===================================================== -->
 <section class="final-section">
   <h2 class="final-title reveal">
-    Stop running your store<br>
-    from <em>memory.</em><br>
-    <span class="accent">Start with a system.</span>
+    توقف عن تشغيل متجرك<br>
+    بـ<em>الذاكرة.</em><br>
+    <span class="accent">ابدأ بنظام حقيقي.</span>
   </h2>
   <p class="final-sub reveal">
-    Every day without documented systems is a day your store runs on luck and habit. AUTOMATEX gives you the operating system to run your store on documented systems, not memory.
+    كل يوم بدون أنظمة موثقة هو يوم يعمل فيه متجرك على الحظ والعادة. AUTOMATEX يعطيك نظام التشغيل لإدارة متجرك بوضوح وثبات، لا بالذاكرة.
   </p>
   <a class="btn btn-xl reveal" href="https://automatexx.gumroad.com/l/AUTOMATEX?wanted=true">
-    Get Instant Access — $70
+    اشتري الآن — 70$
   </a>
   <p class="btn-sub reveal" style="margin-top:14px;">
-    Fix the backend before you scale traffic.
+    رتّب الخلفية قبل أن تضخ الزيارات.
   </p>
 </section>
 
@@ -2312,7 +2438,7 @@
 
 <footer>
   <div class="foot-logo">AUTOMATEX</div>
-  <div class="foot-copy">© 2026 AUTOMATEX. All rights reserved. Digital product. Instant access via Gumroad.</div>
+  <div class="foot-copy">© 2026 AUTOMATEX. جميع الحقوق محفوظة. منتج رقمي. وصول فوري عبر Gumroad.</div>
 </footer>
 
 <!-- =====================================================
